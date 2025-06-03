@@ -28,7 +28,7 @@ const Comming = () => {
         <main className="Main">
 
             <div className="Main-texto1">
-                <p className="texto delay-3">001</p>
+                <p className="texto delay-1">001</p>
                 <p className="texto delay-1">CREATIVE BRAND</p>
             </div>
 
@@ -39,17 +39,17 @@ const Comming = () => {
 
 
             <div className="Main-texto2">
-              <span className="Main-span"> <p className="texto delay-2">COMING SOON · 2025  </p><FaArrowRightLong />
+              <span className="Main-span "> <p className="texto delay-1">COMING SOON · 2025  </p><FaArrowRightLong className='texto delay-1' />
 
               </span>
-                <div className="texto delay-4">IG @LITERAL___</div>
+                <div className="texto delay-1">IG @LITERAL___</div>
             </div>
 
 
             <Canvas ref={canvasRef}/>
            
         </main>
-        <button className="Button" onClick={handleClear}>CLEAR</button>
+        <button className="Button delay-3" onClick={handleClear}>CLEAR</button>
 
 
 

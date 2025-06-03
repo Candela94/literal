@@ -15,12 +15,14 @@ const Canvas = forwardRef((props, ref) => {
     // Función para obtener las coordenadas correctas del mouse
     const getMousePos = (canvas, e) => {
         const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
         const scaleX = canvas.width / rect.width;
         const scaleY = canvas.height / rect.height;
         
         return {
-            x: (e.clientX - rect.left) * scaleX,
-            y: (e.clientY - rect.top) * scaleY
+            x: (clientX - rect.left) * scaleX,
+            y: (clientY - rect.top) * scaleY
         };
     };
 
@@ -30,9 +32,13 @@ const Canvas = forwardRef((props, ref) => {
 
         // Función para redimensionar el canvas
         const resizeCanvas = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            
+            const ratio = window.devicePixelRatio || 1;
+            canvas.width = window.innerWidth * ratio;
+            canvas.height = window.innerHeight * ratio;
+            canvas.style.width = window.innerWidth + 'px';
+            canvas.style.height = window.innerHeight + 'px';
+            context.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
+            context.scale(ratio, ratio);
             context.lineWidth = 3;
             context.lineCap = 'round';
             context.strokeStyle = '#FF69B4';
@@ -45,12 +51,14 @@ const Canvas = forwardRef((props, ref) => {
         
         return () => {
             window.removeEventListener('resize', resizeCanvas);
+        
         };
     }, []);
 
     // Función para cuando el usuario empieza a dibujar
     const startDrawing = (e) => {
         const canvas = canvasRef.current;
+        e.preventDefault();
         const pos = getMousePos(canvas, e);
         const context = canvas.getContext('2d');
 
@@ -63,6 +71,7 @@ const Canvas = forwardRef((props, ref) => {
     const draw = (e) => {
         if (!isDrawing) return;
 
+        e.preventDefault();
         const canvas = canvasRef.current;
         const pos = getMousePos(canvas, e);
         const context = canvas.getContext('2d');
@@ -77,11 +86,19 @@ const Canvas = forwardRef((props, ref) => {
         }
     };
 
+
+
+
     const stopDrawing = () => {
+
+        e.preventDefault();
         const context = canvasRef.current.getContext('2d');
         context.closePath();
         setIsDrawing(false);
     };
+
+
+
 
     const clearCanvas = () => {
         const canvas = canvasRef.current;
@@ -107,6 +124,12 @@ const Canvas = forwardRef((props, ref) => {
                 onMouseMove={draw}
                 onMouseUp={stopDrawing}
                 onMouseLeave={stopDrawing}
+
+
+                onTouchStart={startDrawing}  
+                onTouchMove={draw}           
+                onTouchEnd={stopDrawing}    
+                onTouchCancel={stopDrawing}
             />
         </>
     );

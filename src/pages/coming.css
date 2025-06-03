@@ -48,6 +48,30 @@
 
 
 
+.abrir{
+    opacity: 0;
+    animation:abrir 1s ease-out forwards;
+  animation-delay: 0.5s; /* ajusta el delay si lo necesitas */
+  transform: scaleX(0); 
+  transform-origin: center;
+  display: inline-block; 
+
+}
+
+
+@keyframes abrir {
+    0% {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+
+
+
 
 
 .texto{
@@ -63,26 +87,23 @@
 
 
 .delay-1{
-    animation-delay: 0.2s;
+    animation-delay: 0.5s;
 }
 
 
 
 .delay-2{
-    animation-delay: 0.6s;
+    animation-delay: 1s;
 }
 
 
 
 .delay-3{
-    animation-delay: 1.6s ;
+    animation-delay: 1s;
 }
 
 
 
-.delay-4{
-    animation-delay:2s ;
-}
 
 
 
@@ -112,6 +133,25 @@
     align-items: center;
 }
 
+
+
+
+.Button{
+    position: fixed;
+    right: 3rem;
+    background:none;
+    border: none;
+    font-family: outfit-semibold;
+    cursor: pointer;
+    z-index: 1001;
+   
+    
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    animation: persiana 0.5s ease-out forwards;
+    animation-delay: 1.5s;
+
+}
 
 
 
