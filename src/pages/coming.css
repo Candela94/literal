@@ -1,0 +1,89 @@
+
+
+
+.Main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.Main-titulo{
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 60px;
+   
+   
+    
+    width: 310px;
+}
+
+
+
+.Literal-texto{
+    border: 3px solid black;
+    padding: 0.1rem 0.4rem;
+    border-radius: 100%;
+    position: absolute;
+    right: 6px;
+    top: 5px;
+    
+    font-family: outfit-black;
+    font-weight: 800;
+    
+}
+
+
+
+
+.Titulo{
+    font-size: 5rem;
+    font-family: outfit-black;
+}
+
+
+
+
+
+.texto{
+    text-align: center;
+    font-weight: 600;
+    font-family: outfit-semibold;
+}
+
+
+
+
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+   
+      
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @media (min-width: 1025px) {
+      
+   
+    
+    
+      
+    
+    
+    }

@@ -1,0 +1,101 @@
+
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+:root{
+
+  font-family: outfit-medium, poppins;
+  font-size: 14px;
+
+}
+
+
+
+@font-face {
+  font-family: outfit-black;
+  src: url(../../public/fonts/Outfit-Black.ttf);
+}
+
+
+
+
+@font-face {
+  font-family: outfit-extrabold;
+  src: url(../../public/fonts/Outfit-ExtraBold.ttf);
+}
+
+
+
+
+@font-face {
+  font-family: outfit-semibold;
+  src: url(../../public/fonts/Outfit-SemiBold.ttf);
+}
+
+
+
+
+@font-face {
+  font-family: outfit-regular;
+  src: url(../../public/fonts/Outfit-Regular.ttf);
+}
+
+
+@font-face {
+  font-family: outfit-medium;
+  src: url(../../public/fonts/Outfit-Medium.ttf);
+}
+
+
+
+.Main{
+  padding: 1.5rem;
+}
+
+
+
+
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+:root{
+
+
+  font-size: 16px;
+
+
+}
+  
+
+
+}
+
+
+
+
+
+
+
+
+
+@media (min-width: 1025px) {
+  
+:root{
+
+
+  font-size: 16px;
+
+
+}
+
+
+  
+
+
+}

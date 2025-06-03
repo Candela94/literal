@@ -1,0 +1,21 @@
+
+
+.Canvas{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+}
+
+
+.Button{
+    position: fixed;
+    right: 3rem;
+    background:none;
+    border: none;
+    font-family: outfit-semibold;
+    cursor: pointer;
+    z-index: 1001;
+}
