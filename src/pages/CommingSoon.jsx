@@ -41,9 +41,9 @@ const Comming = () => {
 
 
             <div className="Main-texto2">
-              <span className="Main-span "> <p className="texto delay-1">COMING SOON · 2025  </p><FaArrowRightLong className='texto delay-1' />
+              <div className="Main-span texto delay-1"> <span className="Span">COMING SOON · 2025  </span><FaArrowRightLong  />
 
-              </span>
+              </div>
                 <div className="texto delay-1">IG @LITERAL___</div>
             </div>
 
