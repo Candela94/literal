@@ -32,25 +32,42 @@ const Canvas = forwardRef((props, ref) => {
 
         // Función para redimensionar el canvas
         const resizeCanvas = () => {
-            const ratio = window.devicePixelRatio || 1;
-            canvas.width = window.innerWidth * ratio;
-            canvas.height = window.innerHeight * ratio;
-            canvas.style.width = window.innerWidth + 'px';
-            canvas.style.height = window.innerHeight + 'px';
-            context.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
-            context.scale(ratio, ratio);
-            context.lineWidth = 3;
-            context.lineCap = 'round';
-            context.strokeStyle = '#FF69B4';
-        };
+            const ratio = Math.min(window.devicePixelRatio || 1, 2);
+            const width = window.innerWidth;
+        const height = window.innerHeight;
+        
+        canvas.width = width * ratio;
+        canvas.height = height * ratio;
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+        
+        context.scale(ratio, ratio);
+        context.lineWidth = 3;
+        context.lineCap = 'round';
+        context.strokeStyle = '#FF69B4';
+        context.imageSmoothingEnabled = true; // Mejora el renderizado
+    };
 
         resizeCanvas();
+
+
+        let resizeTimeout;
+        const handleResize = () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(resizeCanvas, 100);
+        };
+
+
+
+
+
         
         // Escuchar cambios de tamaño de ventana
         window.addEventListener('resize', resizeCanvas);
         
         return () => {
             window.removeEventListener('resize', resizeCanvas);
+            clearTimeout(resizeTimeout);
         
         };
     }, []);
@@ -59,6 +76,7 @@ const Canvas = forwardRef((props, ref) => {
     const startDrawing = (e) => {
         const canvas = canvasRef.current;
         e.preventDefault();
+        e.stopPropagation();
         const pos = getMousePos(canvas, e);
         const context = canvas.getContext('2d');
 
@@ -89,9 +107,9 @@ const Canvas = forwardRef((props, ref) => {
 
 
 
-    const stopDrawing = () => {
+    const stopDrawing = (e) => {
 
-        e.preventDefault();
+       if(e) e.preventDefault();
         const context = canvasRef.current.getContext('2d');
         context.closePath();
         setIsDrawing(false);
@@ -120,16 +138,10 @@ const Canvas = forwardRef((props, ref) => {
             <canvas
                 className='Canvas'
                 ref={canvasRef}
-                onMouseDown={startDrawing}
-                onMouseMove={draw}
-                onMouseUp={stopDrawing}
-                onMouseLeave={stopDrawing}
-
-
-                onTouchStart={startDrawing}  
-                onTouchMove={draw}           
-                onTouchEnd={stopDrawing}    
-                onTouchCancel={stopDrawing}
+                onPointerDown={startDrawing}
+                onPointerMove={draw}
+                onPointerUp={stopDrawing}
+                onPointerLeave={stopDrawing}
             />
         </>
     );
