@@ -16,39 +16,15 @@
 .Main-titulo{
     display: flex;
     align-items: center;
-    position: relative;
     height: 66px;
-
     width: 283px;
 }
 
-.Literal-copy{
-    font-size: 1rem;
-    font-family: outfit-black;
-    font-weight: bold;
-}
-
-.Literal-texto{
-
-    border: 3px solid black;
-  
-    padding: 0rem 0.3rem;
-    border-radius: 100%;
-    position: absolute;
-    right: 10px;
-    top: 11px;
-    font-family: outfit-black;
-    font-weight: 900;
-    
-}
 
 
 
 
-.Titulo{
-    font-size: 4.5rem;
-    font-family: outfit-black;
-}
+
 
 
 
