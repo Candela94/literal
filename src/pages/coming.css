@@ -16,9 +16,9 @@
 .Main-titulo{
     display: flex;
     align-items: center;
-    height: 66px;
+    height: 76px;
     width: 100%;
-    max-width: 500px;
+    max-width: 350px;
 }
 
 
@@ -151,7 +151,8 @@
 @media (min-width: 768px) and (max-width: 1024px) {
   
    .Main-titulo{
-   max-width: 700px;
+   max-width: 500px;
+   height: 100px;
     
    }
       
@@ -179,7 +180,8 @@
       
    
         .Main-titulo{
-           max-width: 800px;
+           max-width: 600px;
+           height: 121px;
            }
 
 
