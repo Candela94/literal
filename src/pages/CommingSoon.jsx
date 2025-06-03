@@ -33,10 +33,11 @@ const Comming = () => {
             </div>
 
             <div className="Main-titulo">
-            <h1 className="Titulo">
-        LITERAL<span className="Literal-texto">C</span>
-    </h1>
-            </div>
+          
+        <h1 className="Titulo">LITERAL</h1>
+        <span className="Literal-texto">C</span>
+    </div>
+           
 
 
             <div className="Main-texto2">

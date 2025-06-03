@@ -12,17 +12,19 @@ const Canvas = forwardRef((props, ref) => {
         clearCanvas
     }));
 
-    // Función para obtener las coordenadas correctas del mouse
-    const getMousePos = (canvas, e) => {
+    // Función para obtener las coordenadas correctas del pointer
+    const getPointerPos = (canvas, e) => {
         const rect = canvas.getBoundingClientRect();
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
         
+        // Usar las coordenadas del pointer event directamente
+        const clientX = e.clientX;
+        const clientY = e.clientY;
+        
+        // Calcular la posición relativa al canvas SIN el devicePixelRatio
+        // porque ya lo manejamos en el contexto
         return {
-            x: (clientX - rect.left) * scaleX,
-            y: (clientY - rect.top) * scaleY
+            x: clientX - rect.left,
+            y: clientY - rect.top
         };
     };
 
@@ -32,24 +34,27 @@ const Canvas = forwardRef((props, ref) => {
 
         // Función para redimensionar el canvas
         const resizeCanvas = () => {
-            const ratio = Math.min(window.devicePixelRatio || 1, 2);
+            const ratio = window.devicePixelRatio || 1;
             const width = window.innerWidth;
-        const height = window.innerHeight;
-        
-        canvas.width = width * ratio;
-        canvas.height = height * ratio;
-        canvas.style.width = width + 'px';
-        canvas.style.height = height + 'px';
-        
-        context.scale(ratio, ratio);
-        context.lineWidth = 3;
-        context.lineCap = 'round';
-        context.strokeStyle = '#FF69B4';
-        context.imageSmoothingEnabled = true; // Mejora el renderizado
-    };
+            const height = window.innerHeight;
+            
+            // Configurar el tamaño del canvas
+            canvas.width = width * ratio;
+            canvas.height = height * ratio;
+            
+            // Configurar el tamaño visual
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+            
+            // Escalar el contexto para que coincida con el devicePixelRatio
+            context.scale(ratio, ratio);
+            context.lineWidth = 3;
+            context.lineCap = 'round';
+            context.strokeStyle = '#FF69B4';
+            context.imageSmoothingEnabled = true;
+        };
 
         resizeCanvas();
-
 
         let resizeTimeout;
         const handleResize = () => {
@@ -57,27 +62,24 @@ const Canvas = forwardRef((props, ref) => {
             resizeTimeout = setTimeout(resizeCanvas, 100);
         };
 
-
-
-
-
-        
         // Escuchar cambios de tamaño de ventana
-        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('resize', handleResize);
         
         return () => {
-            window.removeEventListener('resize', resizeCanvas);
+            window.removeEventListener('resize', handleResize);
             clearTimeout(resizeTimeout);
-        
         };
     }, []);
 
     // Función para cuando el usuario empieza a dibujar
     const startDrawing = (e) => {
         const canvas = canvasRef.current;
+        if (!canvas) return;
+        
         e.preventDefault();
         e.stopPropagation();
-        const pos = getMousePos(canvas, e);
+        
+        const pos = getPointerPos(canvas, e);
         const context = canvas.getContext('2d');
 
         context.beginPath();
@@ -85,13 +87,17 @@ const Canvas = forwardRef((props, ref) => {
         setIsDrawing(true);
     };
 
-    // Función que se llama cuando el usuario mueve el ratón mientras dibuja
+    // Función que se llama cuando el usuario mueve el pointer mientras dibuja
     const draw = (e) => {
         if (!isDrawing) return;
 
         e.preventDefault();
+        e.stopPropagation();
+        
         const canvas = canvasRef.current;
-        const pos = getMousePos(canvas, e);
+        if (!canvas) return;
+        
+        const pos = getPointerPos(canvas, e);
         const context = canvas.getContext('2d');
 
         context.lineTo(pos.x, pos.y);
@@ -104,24 +110,27 @@ const Canvas = forwardRef((props, ref) => {
         }
     };
 
-
-
-
     const stopDrawing = (e) => {
-
-       if(e) e.preventDefault();
-        const context = canvasRef.current.getContext('2d');
+        if (!isDrawing) return;
+        
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        
+        const context = canvas.getContext('2d');
         context.closePath();
         setIsDrawing(false);
     };
 
-
-
-
     const clearCanvas = () => {
         const canvas = canvasRef.current;
+        if (!canvas) return;
+        
         const context = canvas.getContext('2d');
-
         context.clearRect(0, 0, canvas.width, canvas.height);
 
         setHasCleared(true);
@@ -142,6 +151,8 @@ const Canvas = forwardRef((props, ref) => {
                 onPointerMove={draw}
                 onPointerUp={stopDrawing}
                 onPointerLeave={stopDrawing}
+                onPointerCancel={stopDrawing}
+                style={{ touchAction: 'none' }}
             />
         </>
     );
