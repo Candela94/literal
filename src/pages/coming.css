@@ -18,6 +18,7 @@
     align-items: center;
     position: relative;
     height: 66px;
+    
    
    
     
@@ -42,7 +43,7 @@
 
 
 .Titulo{
-    font-size: 5rem;
+    font-size: 4.5rem;
     font-family: outfit-black;
 }
 
@@ -144,6 +145,7 @@
     font-family: outfit-semibold;
     cursor: pointer;
     z-index: 1001;
+    color: black;
    
     
     opacity: 0;

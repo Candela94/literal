@@ -11,6 +11,7 @@
 
   font-family: outfit-medium, poppins;
   font-size: 14px;
+  color: black;
 
 }
 
@@ -19,6 +20,8 @@
 @font-face {
   font-family: outfit-black;
   src: url(../../public/fonts/Outfit-Black.ttf);
+  font-display: swap;
+  
 }
 
 
@@ -27,6 +30,7 @@
 @font-face {
   font-family: outfit-extrabold;
   src: url(../../public/fonts/Outfit-ExtraBold.ttf);
+  font-display: swap;
 }
 
 
@@ -35,6 +39,7 @@
 @font-face {
   font-family: outfit-semibold;
   src: url(../../public/fonts/Outfit-SemiBold.ttf);
+  font-display: swap;
 }
 
 
@@ -43,18 +48,21 @@
 @font-face {
   font-family: outfit-regular;
   src: url(../../public/fonts/Outfit-Regular.ttf);
+  font-display: swap;
 }
 
 
 @font-face {
   font-family: outfit-medium;
   src: url(../../public/fonts/Outfit-Medium.ttf);
+  font-display: swap;
 }
 
 
 
 .Main{
   padding: 1.5rem;
+  font-display: swap;
 }
 
 
