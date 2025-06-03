@@ -30,13 +30,13 @@
 
 .Literal-texto{
 
-    border: 4.5px solid black;
+    border: 3px solid black;
   
     padding: 0rem 0.3rem;
     border-radius: 100%;
     position: absolute;
-    right: 6px;
-    top: 5px;
+    right: 10px;
+    top: 11px;
     font-family: outfit-black;
     font-weight: 900;
     
