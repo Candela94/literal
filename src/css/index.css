@@ -4,6 +4,20 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
+  -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    
+    /* Forzar que Chrome respete las fuentes */
+    font-synthesis: none;
+    -webkit-font-feature-settings: "kern" 1;
+    font-feature-settings: "kern" 1;
+    
+    /* Desactivar auto-ajustes de Chrome */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 
