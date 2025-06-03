@@ -35,7 +35,7 @@ const Comming = () => {
             <div className="Main-titulo">
           
         <h1 className="Titulo">LITERAL</h1>
-        <span className="Literal-texto">C</span>
+        <span className="Literal-texto"><p className="Literal-copy">C</p></span>
     </div>
            
 

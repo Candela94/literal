@@ -18,17 +18,20 @@
     align-items: center;
     position: relative;
     height: 66px;
-    
-   
-  
-    
-    width: 290px;
+
+    width: 283px;
 }
 
-
+.Literal-copy{
+    font-size: 1rem;
+    font-family: outfit-black;
+    font-weight: bold;
+}
 
 .Literal-texto{
+
     border: 4.5px solid black;
+  
     padding: 0rem 0.3rem;
     border-radius: 100%;
     position: absolute;
@@ -167,7 +170,7 @@
 @media (min-width: 768px) and (max-width: 1024px) {
   
    .Main-titulo{
-    width: 414px;
+    width: 416px;
     height: 80px;
     
    }
@@ -196,7 +199,7 @@
       
    
         .Main-titulo{
-            width: 475px;
+            width: 478px;
             height: 92px;
            }
 
