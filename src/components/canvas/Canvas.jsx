@@ -48,9 +48,11 @@ const Canvas = forwardRef((props, ref) => {
             
             // Escalar el contexto para que coincida con el devicePixelRatio
             context.scale(ratio, ratio);
-            context.lineWidth = 3;
+            context.lineWidth = 1.5;
             context.lineCap = 'round';
-            context.strokeStyle = '#FF69B4';
+            context.strokeStyle = '#F24283';
+            context.shadowColor = '#F24283'; // Mismo color para un efecto glow
+    context.shadowBlur = 7;      
             context.imageSmoothingEnabled = true;
         };
 
