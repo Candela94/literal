@@ -3,6 +3,11 @@ import '../css/index.css'
 import './coming.css'
 import Canvas from '../components/canvas/Canvas';
 import { useRef } from 'react';
+import { FaArrowRightLong } from "react-icons/fa6";
+
+
+
+
 
 const Comming = () => {
 
@@ -23,8 +28,8 @@ const Comming = () => {
         <main className="Main">
 
             <div className="Main-texto1">
-                <p className="texto">001</p>
-                <p className="texto">CREATIVE BRAND</p>
+                <p className="texto delay-3">001</p>
+                <p className="texto delay-1">CREATIVE BRAND</p>
             </div>
 
             <div className="Main-titulo">
@@ -34,18 +39,20 @@ const Comming = () => {
 
 
             <div className="Main-texto2">
-                <p className="texto">COMING SOON · 2025  </p>
-                <div className="texto">IG @LITERAL___</div>
+              <span className="Main-span"> <p className="texto delay-2">COMING SOON · 2025  </p><FaArrowRightLong />
+
+              </span>
+                <div className="texto delay-4">IG @LITERAL___</div>
             </div>
 
 
-
+            <Canvas ref={canvasRef}/>
            
         </main>
         <button className="Button" onClick={handleClear}>CLEAR</button>
 
 
-<Canvas ref={canvasRef}/>
+
 
         
         
