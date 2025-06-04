@@ -11,6 +11,17 @@
 }
 
 
+.Main-texto2{
+    z-index: 9;
+
+}
+
+.Main-texto2 a{
+    position: relative;
+    z-index: 99; /* Aún más encima */
+    pointer-events: auto;
+}
+
 
 
 .Main-titulo{

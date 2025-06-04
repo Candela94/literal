@@ -44,7 +44,7 @@ const Comming = () => {
               <div className="Main-span texto delay-1"> <span className="Span">COMING SOON · 2025  </span><FaArrowRightLong  />
 
               </div>
-                <div className="texto delay-1">IG @LITERAL_____</div>
+                <a href="https://www.instagram.com/literal_____/" target='_blank'><div className="texto delay-1">IG @LITERAL_____</div></a>
             </div>
 
 
