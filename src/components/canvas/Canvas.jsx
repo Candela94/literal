@@ -8,6 +8,13 @@ const Canvas = forwardRef((props, ref) => {
     const [hasCleared, setHasCleared] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
 
+
+
+    const [pointerStartPos, setPointerStartPos] = useState({ x: 0, y: 0 });
+    const [hasMoved, setHasMoved] = useState(false);
+    const [pointerStartTime, setPointerStartTime] = useState(0);
+
+
     useImperativeHandle(ref, () => ({
         clearCanvas
     }));
@@ -75,58 +82,120 @@ const Canvas = forwardRef((props, ref) => {
 
     // Función para cuando el usuario empieza a dibujar
     const startDrawing = (e) => {
+
         const canvas = canvasRef.current;
         if (!canvas) return;
         
-        e.preventDefault();
-        e.stopPropagation();
-        
         const pos = getPointerPos(canvas, e);
+        
+        // Guardar posición inicial y tiempo para detectar click vs drag
+        setPointerStartPos(pos);
+        setPointerStartTime(Date.now());
+        setHasMoved(false);
+        setIsDrawing(true);
+        
+        // NO prevenir el evento aquí - esperamos a ver si es click o drag
+        
         const context = canvas.getContext('2d');
-
         context.beginPath();
         context.moveTo(pos.x, pos.y);
-        setIsDrawing(true);
     };
 
     // Función que se llama cuando el usuario mueve el pointer mientras dibuja
     const draw = (e) => {
         if (!isDrawing) return;
 
-        e.preventDefault();
-        e.stopPropagation();
+      
         
         const canvas = canvasRef.current;
         if (!canvas) return;
         
-        const pos = getPointerPos(canvas, e);
-        const context = canvas.getContext('2d');
+       const pos = getPointerPos(canvas, e);
+        
+        // Calcular la distancia desde el punto inicial
+        const distance = Math.sqrt(
+            Math.pow(pos.x - pointerStartPos.x, 2) + 
+            Math.pow(pos.y - pointerStartPos.y, 2)
+        );
+        
+        // Si se ha movido más de 8px, consideramos que está dibujando
+        if (distance > 8) {
+            if (!hasMoved) {
+                // Primera vez que detectamos movimiento - ahora sí prevenir eventos
+                setHasMoved(true);
+               
+            }
 
-        context.lineTo(pos.x, pos.y);
-        context.stroke();
 
-        if (!hasDrawn) {
-            setHasDrawn(true);
-            setHasCleared(false);
-            setIsVisible(true);
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const context = canvas.getContext('2d');
+            context.lineTo(pos.x, pos.y);
+            context.stroke();
+
+            if (!hasDrawn) {
+                setHasDrawn(true);
+                setHasCleared(false);
+                setIsVisible(true);
+            }
+            
+            // if (hasMoved) {
+            //     e.preventDefault();
+            //     e.stopPropagation();
+            // }
         }
     };
 
     const stopDrawing = (e) => {
         if (!isDrawing) return;
         
-        if (e) {
-            e.preventDefault();
-            e.stopPropagation();
+        const timeDiff = Date.now() - pointerStartTime;
+
+        setIsDrawing(false)
+        setHasMoved(false)
+        
+        // Si no se movió y fue un click rápido (menos de 200ms)
+        if (!hasMoved && timeDiff < 200) {
+            // Buscar el elemento que está debajo del canvas en esa posición
+            const canvas = canvasRef.current;
+            const rect = canvas.getBoundingClientRect();
+            const absoluteX = pointerStartPos.x + rect.left;
+            const absoluteY = pointerStartPos.y + rect.top;
+            
+            // Temporalmente ocultar el canvas para encontrar el elemento debajo
+            canvas.style.pointerEvents = 'none';
+            const elementBelow = document.elementFromPoint(absoluteX, absoluteY);
+            canvas.style.pointerEvents = 'auto';
+            
+            // Si es un link o está dentro de un link, activarlo
+            if (elementBelow) {
+                const linkElement = elementBelow.closest('a') || 
+                                  (elementBelow.tagName.toLowerCase() === 'a' ? elementBelow : null);
+                
+                if (linkElement) {
+                    // Simular click en el link
+                    linkElement.click();
+                }
+            }
+        } else if (hasMoved) {
+            // Solo prevenir si realmente se dibujó
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
         }
-        
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        
-        const context = canvas.getContext('2d');
-        context.closePath();
-        setIsDrawing(false);
-    };
+
+
+        // const canvas = canvasRef.current;
+        // if(canvas) {
+        //     const context=canvas.getContext('2d');
+        //     context.closePath()
+        // }
+    
+    
+    
+    }
 
     const clearCanvas = () => {
         const canvas = canvasRef.current;
@@ -147,14 +216,14 @@ const Canvas = forwardRef((props, ref) => {
     return (
         <>
             <canvas
-                className='Canvas'
+                className={`Canvas ${isDrawing ? 'drawing' : ''}`}
                 ref={canvasRef}
                 onPointerDown={startDrawing}
                 onPointerMove={draw}
                 onPointerUp={stopDrawing}
                 onPointerLeave={stopDrawing}
                 onPointerCancel={stopDrawing}
-                style={{ touchAction: 'none' }}
+              
             />
         </>
     );

@@ -35,6 +35,15 @@ a{
 }
 
 
+
+
+body {
+  cursor: url('/literal-favicon.svg') 0 0, auto;
+}
+
+
+
+
 @font-face {
   font-family: outfit-black;
   src: url(../../public/fonts/Outfit-Black.ttf);

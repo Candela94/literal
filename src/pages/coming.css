@@ -12,16 +12,27 @@
 
 
 .Main-texto2{
-    z-index: 9;
+ 
 
 }
 
 .Main-texto2 a{
     position: relative;
-    z-index: 99; /* Aún más encima */
+  
     pointer-events: auto;
 }
 
+
+.instagram{
+
+    display: flex;
+    position: relative;
+    justify-content: center;
+    z-index: 15;
+    cursor: pointer;
+    pointer-events: auto;
+  
+}
 
 
 .Main-titulo{

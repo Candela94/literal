@@ -40,13 +40,21 @@ const Comming = () => {
            
 
 
-            <div className="Main-texto2">
-              <div className="Main-span texto delay-1"> <span className="Span">COMING SOON · 2025  </span><FaArrowRightLong  />
-
-              </div>
-                <a href="https://www.instagram.com/literal_____/" target='_blank'><div className="texto delay-1">IG @LITERAL_____</div></a>
-            </div>
-
+    <div className="Main-texto2">
+    <div className="Main-span texto delay-1"> 
+        <span className="Span">COMING SOON · 2025</span>
+        <FaArrowRightLong />
+    </div>
+    
+    <a 
+        href="https://www.instagram.com/literal_____/" 
+        target='_blank'
+        rel="noopener noreferrer"
+        className="texto delay-1 instagram"
+    >
+        IG @LITERAL_____
+    </a>
+</div>
 
             <Canvas ref={canvasRef}/>
            
