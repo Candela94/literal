@@ -23,7 +23,7 @@
 
 :root{
 
-  font-family: outfit-medium, poppins;
+  font-family: outfit-semibold, poppins;
   font-size: 14px;
   color: black;
 
@@ -39,6 +39,8 @@ a{
 
 body {
   cursor: url('/literal-favicon.svg') 0 0, auto;
+  height: 100%;
+  width: 100%;
 }
 
 
@@ -86,12 +88,12 @@ body {
 }
 
 
-
+/* 
 .Main{
-  padding: 1.5rem;
+  padding: 1rem;
   font-display: swap;
 }
-
+ */
 
 
 

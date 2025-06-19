@@ -1,0 +1,31 @@
+@keyframes persiana {
+
+    0%{
+        clip-path:  inset(0 0 100% 0);
+        opacity: 0;
+    }
+
+
+    100%{
+        clip-path:  inset(0 0 0% 0);
+        opacity: 1;
+    }
+}
+
+
+
+.delay-1{
+    animation-delay: 1.2s;
+}
+
+
+
+.delay-2{
+    animation-delay: 1s;
+}
+
+
+
+.delay-3{
+    animation-delay: 2.2s;
+}

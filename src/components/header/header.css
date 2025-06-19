@@ -1,0 +1,74 @@
+
+
+.Header{
+    padding: 1.5rem;
+    color: black;
+}
+
+
+
+.Logo-dekstop{
+    display: none;
+}
+
+
+.Logo-mobile{
+    width: 50px;
+}
+
+
+.Header-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Header-ul{
+    display: flex;
+    gap: 2rem;
+}
+
+.Header-li{
+    list-style: none;
+
+}
+
+
+
+
+
+
+
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .Logo-mobile{
+        display: none;
+    }
+
+    .Logo-dekstop{
+        display: block;
+        width: 150px;
+    }
+}
+
+
+
+
+
+
+
+
+
+@media (min-width: 1025px) {
+
+    .Logo-mobile{
+        display: none;
+    }
+
+    .Logo-dekstop{
+        display: block;
+        width: 200px;
+    }
+}
