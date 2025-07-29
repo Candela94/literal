@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: center; 
     align-items: center; 
-    height: 100vh; 
+    height: 95vh; 
     text-align: center;
     position: relative; 
     overflow: hidden;
@@ -149,8 +149,9 @@
 
 
 .Button{
-    position: fixed;
+    position: absolute;
     right: 3rem;
+    bottom: 3rem;
     background:none;
     border: none;
     font-family: outfit-semibold;
@@ -159,7 +160,7 @@
     color: black;
    
     
-    opacity: 0;
+ 
     clip-path: inset(0 0 100% 0);
     animation: persiana 0.5s ease-out forwards;
     animation-delay: 1.5s;

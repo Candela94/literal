@@ -59,7 +59,7 @@ const Comming = () => {
                 <Canvas ref={canvasRef} />
 
             </main>
-            <button className="Button delay-3" onClick={handleClear}>CLEAR</button>
+            <button className="Button texto delay-3" onClick={handleClear}>CLEAR</button>
 
 
 
