@@ -1,105 +1,174 @@
 
 
-.Imagen{
-    
+
+
+
+.Imagen {
     height: 350px;
-}
-
-
-.Imagen-producto{
+  }
+  
+  .Imagen-producto {
     width: 100%;
     height: 100%;
     object-fit: cover;
-
-}
-
+  }
 
 
-.Info-producto{
+
+
+
+  
+  .Info-producto {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     padding: 1.5rem;
-}
+  }
 
 
 
 
 
-.Nombre-precio{
+  
+  .Nombre-precio,
+  
+  .Desc-producto, .Linea {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: slideFadeIn ease-out forwards;
+    will-change: opacity, transform;
+  }
+
+
+  .Descripcion{
+
+    padding: 0.5rem 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    animation: abrirPersiana 0.4s ease-out 0.7s forwards;
+    opacity: 0;
+    will-change: transform, opacity;
+
+
+  }
+  
+
+
+
+
+
+
+
+
+  .Linea{
+    height: 2px;
+    background-color: black;
+  }
+
+
+
+
+
+  .Nombre-precio {
     display: flex;
     justify-content: space-between;
     align-items: center;
-   
-   
+    animation-duration: 0.3s;
     animation-delay: 0.3s;
-   
+  }
+  
+
+.Linea-uno{
+    animation-duration: 0.3s;
+    animation-delay: 0.4s;
 }
 
 
-.Nombre-precio, .Descripcion{
-    opacity: 0;
-    transform: translateY(10px);
-    animation: slideFadeIn 0.3s ease-out forwards;
-  will-change: opacity, transform;
-}
+
+
+  .Descripcion {
+    padding: 0.5rem 0 0.5rem 0;
+    animation-duration: 0.3s;
+    animation-delay: 0.4s;
+  }
+  
+
+  .Linea-dos{
+
+    animation-duration: 0.3s;
+    animation-delay: 1s;
+
+  }
 
 
 
 
-.Descripcion-producto{
-
-    border-top: 2px solid black ;
-    opacity: 0;
-    transform: translateY(10px);
-    animation: slideFadeIn 0.4s ease-out forwards;
-
+  .Desc-producto {
+    animation-duration: 0.4s;
     animation-delay: 0.5s;
-}
-.Descripcion{
-   
-   
-    padding-top: 1rem;
-    
-    animation-delay: 0.7s;
-   
+    cursor: pointer;
+  }
 
 
-}
 
 
-@keyframes slideFadeIn {
-
-   
-
-    to{
-        opacity: 1;
-        transform: translateY(0);
+/* ANIMACIONES */
+  
+  @keyframes slideFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
-}
+  }
+  
+  @media (min-width: 768px) {
 
-
-
-
-
-
-
-@media (min-width: 768px)  {
-
-
-    .Main-product{
-        display: flex;
-        padding: 2rem;
+    .Main-product {
+      display: flex;
+      padding: 2rem;
     }
   
-    
+    .Imagen {
+      width: 150%;
+      height: 80vh;
+    }
+  }
+  
+
+
+
+
+  @keyframes abrirPersiana {
+
+    to {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+}
+
+
+
+
+
+/* MEDIA QUERIE */
+
+
+  @media (min-width: 768px)  {
+
+
+
     .Imagen{
-        width: 150%;
-       
-        height: 80vh;
+        /* background-color: rebeccapurple; */
+        padding: 1rem;
     }
-      
-    
-    
+
+
+
+
+    .Info-producto{
+        /* background-color: red; */
+        width: 90%;
     }
-    
+
+
+  }
