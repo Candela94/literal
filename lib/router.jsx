@@ -1,8 +1,13 @@
 
 
 import { createBrowserRouter } from "react-router";
+import ProtectedRoute from "../src/pages/protected-route/ProtectedRoute";
 import Landing from "../src/pages/landing/Literal";
 import Layout from "../src/Layout";
+
+
+import LoginAdmin from "../src/pages/admin/LoginAdmin";
+import AdminForm from "../src/pages/admin/AdminForm";
 
 
 
@@ -18,6 +23,33 @@ const router = createBrowserRouter([{
             index: true,
             element:<Landing />
         },
+
+
+        {
+            path:"/admin/login",
+            element: <ProtectedRoute requiredRole = 'admin' />,
+            children : [
+                {
+                index : true ,
+                element : <LoginAdmin />
+                }
+            ]
+        },
+
+
+
+        {
+            path:"/admin/uploads",
+            element: <ProtectedRoute requiredRole = 'admin' />,
+            children : [
+                {
+                index : true ,
+                element : <AdminForm />
+                }
+            ]
+        },
+
+
 
 
        

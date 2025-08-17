@@ -4,12 +4,16 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
 }
 
 
 
 .title{
     font-family: outfit-extrabold;
+    text-align: center;
 }
 
 .Formu-admin{
@@ -32,8 +36,29 @@
 }
 
 
+
+
 .Formu-input:focus{
     outline: none;
 
     border: 4px solid black;
+}
+
+
+.Button-admin{
+
+width: 100%;
+    padding: 0.7rem;
+    border: none;
+    background-color: black;
+    color: white;
+    font-family: outfit-semibold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+
+}
+
+.Button-admin:active{
+    transform: scale(0.98);
 }
