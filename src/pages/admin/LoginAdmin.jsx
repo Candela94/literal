@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router';
 const LoginAdmin = () => {
 
 
-    const VITE_URL_LOCAL = import.meta.env.VITE_URL_LOCAL
+    const VITE_URL= import.meta.env.VITE_URL
     
     const navigate = useNavigate();
 
