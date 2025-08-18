@@ -16,7 +16,23 @@ const AdminForm = () => {
     })
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Simplificado - el evento siempre debe existir aquí
+        // Verificación más robusta del evento
+        if (e && typeof e.preventDefault === 'function') {
+            e.preventDefault();
+        } else {
+            console.warn('Evento no válido recibido:', e);
+        }
+
+        // Validaciones antes de continuar
+        if (!productoData.nombre || !productoData.precio || !productoData.descripcion) {
+            alert('Por favor completa todos los campos requeridos');
+            return;
+        }
+
+        if (!productoData.portada) {
+            alert('Por favor selecciona una imagen de portada');
+            return;
+        }
 
         try {
             const formData = new FormData();
@@ -129,7 +145,12 @@ const AdminForm = () => {
             <main className="Main-admin">
                 <h1 className="title">SUBIDA DE ARCHIVOS</h1>
 
-                <form onSubmit={handleSubmit} className="Formu-admin">
+                <form onSubmit={handleSubmit} className="Formu-admin" noValidate>
+                    {/* Debug info */}
+                    <div style={{fontSize: '12px', color: '#666', marginBottom: '10px'}}>
+                        Estado: Portada: {productoData.portada ? 'Seleccionada' : 'No seleccionada'} | 
+                        Imágenes: {productoData.imagenes.length} archivos
+                    </div>
                     <input 
                         type="text" 
                         className="Formu-input" 
@@ -204,7 +225,8 @@ const AdminForm = () => {
 
                     <div className="Boton">
                         <button 
-                            type='submit'  
+                            type="button"
+                            onClick={handleSubmit}
                             className="Button-admin" 
                             style={{marginTop:'2rem', width:'70%'}}
                         >
