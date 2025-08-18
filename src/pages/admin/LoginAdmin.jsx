@@ -45,7 +45,7 @@ const LoginAdmin = () => {
 
         try {
 
-            const response = await fetch(`${VITE_URL_LOCAL}/api/v1/admin/login`, {
+            const response = await fetch(`${VITE_URL}/api/v1/admin/login`, {
 
                 method:'POST',
                 headers: {
