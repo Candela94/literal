@@ -27,7 +27,8 @@ const AdminForm = () => {
 
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        if (e?.preventDefault) e.preventDefault();
+        else console.warn('handleSubmit fue llamado sin evento válido');
 
         try {
 
@@ -149,11 +150,11 @@ const AdminForm = () => {
                 <form onSubmit={handleSubmit} className="Formu-admin">
 
 
-                    <input type="text" className="Formu-input" name='nombre' placeholder='Nombre del producto' />
-                    <input type="text" className="Formu-input" name='precio' placeholder='Precio' />
-                    <input type="text" className="Formu-input" name='descripcion' placeholder='Descripción' />
-                    <input type="text" className="Formu-input" name='talla' placeholder='Talla' />
-                    <input type="text" className="Formu-input" name='dimensiones' placeholder='Dimensiones' />
+                    <input type="text" className="Formu-input" name='nombre' placeholder='Nombre del producto'  onChange={handleChange} value={productoData.nombre}/>
+                    <input type="text" className="Formu-input" name='precio' placeholder='Precio'  onChange={handleChange} value={productoData.precio}/>
+                    <input type="text" className="Formu-input" name='descripcion' placeholder='Descripción'  onChange={handleChange} value={productoData.descripcion}/>
+                    <input type="text" className="Formu-input" name='talla' placeholder='Talla'  onChange={handleChange} value={productoData.talla}/>
+                    <input type="text" className="Formu-input" name='dimensiones' placeholder='Dimensiones' onChange={handleChange} value={productoData.dimensiones} />
 
 
 
