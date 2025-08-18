@@ -67,7 +67,7 @@ const LoginAdmin = () => {
                 localStorage.setItem('token', datos.token)
                 localStorage.setItem('userRole', datos.user.role)
 
-                LogIn({
+                handleLogin({
                    
                     usuario:datos.user.usuario || '',
                     role:datos.user.role,

@@ -8,6 +8,7 @@ import Layout from "../src/Layout";
 
 import LoginAdmin from "../src/pages/admin/LoginAdmin";
 import AdminForm from "../src/pages/admin/AdminForm";
+import Comming from "../src/pages/coming/CommingSoon";
 
 
 
@@ -21,13 +22,13 @@ const router = createBrowserRouter([{
 
         {
             index: true,
-            element:<Landing />
+            element:<Comming />
         },
 
 
         {
             path:"/admin/login",
-            element: <ProtectedRoute requiredRole = 'admin' />,
+            // element: <ProtectedRoute requiredRole = 'admin' />,
             children : [
                 {
                 index : true ,

@@ -11,8 +11,8 @@ function Layout() {
 
   return (
     <>
-<Comming />
-{/* <Outlet /> */}
+{/* <Comming /> */}
+<Outlet />
 
 {/* <Product />  */}
 {/* <AdminForm /> */}
