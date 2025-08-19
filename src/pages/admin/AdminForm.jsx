@@ -5,10 +5,7 @@ import { useNavigate } from 'react-router';
 const AdminForm = () => {
     const VITE_URL = import.meta.env.VITE_URL
 
-
     const [productoData, setProductoData] = useState({
-
-
         imagenes: [],
         portada: null,
         nombre: '',
@@ -16,143 +13,87 @@ const AdminForm = () => {
         precio: '',
         talla: '',
         dimensiones: ''
-
-
-
     })
 
-
-
-
-
-
     const handleSubmit = async (e) => {
+        e.preventDefault(); // Simplificado - siempre debería ser un evento válido
 
-
-        if (e && typeof e.preventDefault === 'function') {
-
-            e.preventDefault();
-
-
-        } else {
-
-
-            console.warn('Evento no válido recibido:', e);
-
-
-        }
-
+        // Validaciones
         if (!productoData.nombre || !productoData.precio || !productoData.descripcion) {
-
             alert('Por favor completa todos los campos requeridos');
-
             return;
         }
-
-
 
         if (!productoData.portada) {
-
             alert('Por favor selecciona una imagen de portada');
-
             return;
-
-
         }
-
-
-
 
         try {
             const formData = new FormData();
 
+            // Añadir campos de texto
             formData.append('nombre', productoData.nombre);
             formData.append('precio', productoData.precio);
             formData.append('descripcion', productoData.descripcion);
-            formData.append('talla', productoData.talla);
-            formData.append('dimensiones', productoData.dimensiones);
+            formData.append('talla', productoData.talla || '');
+            formData.append('dimensiones', productoData.dimensiones || '');
 
-
-
-
+            // Añadir portada
             if (productoData.portada) {
-
                 formData.append('portada', productoData.portada);
-
             }
 
+            // Añadir imágenes adicionales
             if (productoData.imagenes && productoData.imagenes.length > 0) {
-
-
-                Array.from(productoData.imagenes).forEach((file, index) => {
+                productoData.imagenes.forEach((file) => {
                     formData.append('imgprod', file);
-
-
-
                 });
-
-                
             }
 
+            // Debug: Ver qué se está enviando
+            console.log('Datos a enviar:');
+            for (let [key, value] of formData.entries()) {
+                console.log(key, value);
+            }
 
             const token = localStorage.getItem('token');
-            
-
-
-
 
             if (!token) {
-
                 alert('No se encontró token de autorización');
-
                 return;
-
             }
 
             console.log('Enviando datos al servidor...');
 
             const response = await fetch(`${VITE_URL}/api/v1/admin/uploads`, {
                 method: 'POST',
-
                 headers: {
-
                     'Authorization': `Bearer ${token}`
-                    
                 },
                 body: formData
             });
 
-            console.log('Respuesta del servidor:', response.status); // Para debug
+            console.log('Respuesta del servidor:', response.status);
 
-            
             if (!response.ok) {
                 const errorText = await response.text();
-
                 console.error('Error del servidor:', errorText);
-
-                throw new Error(`Error del servidor: ${response.status}`);
+                throw new Error(`Error del servidor: ${response.status} - ${errorText}`);
             }
 
             const contentType = response.headers.get('content-type');
             
-
-
-
-
             if (!contentType || !contentType.includes('application/json')) {
-
-
                 const responseText = await response.text();
-
                 console.error('Respuesta no es JSON:', responseText);
-
                 throw new Error('El servidor devolvió una respuesta inválida');
-
-
             }
 
             const result = await response.json();
+            console.log('Resultado:', result);
             
+            // Limpiar formulario después del éxito
             setProductoData({
                 nombre: '',
                 descripcion: '',
@@ -163,6 +104,7 @@ const AdminForm = () => {
                 portada: null
             });
 
+            // Limpiar inputs de archivo
             const fileInputs = document.querySelectorAll('input[type="file"]');
             fileInputs.forEach(input => input.value = '');
 
@@ -182,29 +124,26 @@ const AdminForm = () => {
     const handleFileChange = (e) => {
         const { name, files } = e.target;
 
+        console.log(`Cambio en ${name}:`, files); // Debug
+
         if (name === 'imgprod') {
-
-
+            // Validar máximo 10 archivos como en el backend
+            if (files.length > 10) {
+                alert('Máximo 10 imágenes adicionales permitidas');
+                e.target.value = ''; // Limpiar input
+                return;
+            }
             setProductoData((prev) => ({ 
                 ...prev, 
-                [name]: Array.from(files) 
-
-
+                imagenes: Array.from(files)
             }));
-
-
-
         } else if (name === 'portada') {
-
             setProductoData((prev) => ({ 
                 ...prev, 
-                [name]: files[0] || null 
+                portada: files[0] || null 
             }));
         }
     };
-
-
-
 
     return (
         <>
@@ -212,10 +151,13 @@ const AdminForm = () => {
                 <h1 className="title">SUBIDA DE ARCHIVOS</h1>
 
                 <form onSubmit={handleSubmit} className="Formu-admin" noValidate>
-                    {/* Debug info */}
+                    {/* Información de debug */}
                     <div style={{fontSize: '12px', color: '#666', marginBottom: '10px'}}>
-                      
+                        Portada: {productoData.portada ? productoData.portada.name : 'No seleccionada'}
+                        <br />
+                        Imágenes: {productoData.imagenes.length} archivos seleccionados
                     </div>
+
                     <input 
                         type="text" 
                         className="Formu-input" 
@@ -262,7 +204,7 @@ const AdminForm = () => {
 
                     <div className="Formulario-uploads">
                         <label className="Formulario-label" htmlFor="Portada-upload">
-                            Seleccionar portada
+                            Seleccionar portada *
                             <input
                                 onChange={handleFileChange}
                                 name="portada"
@@ -275,7 +217,7 @@ const AdminForm = () => {
                         </label>
 
                         <label className="Formulario-label" htmlFor="Img-upload">
-                            Seleccionar imágenes
+                            Seleccionar imágenes adicionales
                             <input
                                 onChange={handleFileChange}
                                 name="imgprod"
@@ -291,7 +233,6 @@ const AdminForm = () => {
                     <div className="Boton">
                         <button 
                             type="submit"
-                            onClick={handleSubmit}
                             className="Button-admin" 
                             style={{marginTop:'2rem', width:'70%'}}
                         >
