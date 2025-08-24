@@ -10,8 +10,8 @@ function Layout() {
   return (
     <>
 {/* <Comming /> */}
-{/* <Outlet /> */}
-<Prueba />
+<Outlet />
+{/* <Prueba /> */}
 
     </>
   )
