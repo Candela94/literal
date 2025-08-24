@@ -3,22 +3,16 @@ import Comming from "./pages/coming/CommingSoon"
 import Landing from "./pages/landing/Literal"
 import { Outlet } from "react-router"
 import Product from "./pages/product/Product"
-import AdminForm from "./pages/admin/AdminForm"
-import LoginAdmin from "./pages/admin/LoginAdmin"
-
+import Prueba from "./pages/product/Prueba"
 function Layout() {
  
 
   return (
     <>
 {/* <Comming /> */}
-<Outlet />
+{/* <Outlet /> */}
+<Prueba />
 
-{/* <Product />  */}
-{/* <AdminForm /> */}
-{/* <LoginAdmin /> */}
-
-{/* <Intro2 /> */}
     </>
   )
 }

@@ -17,6 +17,10 @@ const Product = () => {
     }
 
 
+
+
+
+
     return (
 
 
@@ -31,7 +35,6 @@ const Product = () => {
 
                 </div>
 
-
                 <div className="Info-producto">
 
                     <div className="Nombre-precio">
@@ -40,9 +43,9 @@ const Product = () => {
 
                     </div>
 
-                    {/* <div className="Desc-producto">
+                    <div className="Desc-producto">
                         <p className="Descripcion">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius ex voluptas officia, perspiciatis sint minus nisi eligendi. Id sed vero amet aut. Officia eligendi placeat minima soluta magnam reprehenderit omnis.</p>
-                    </div> */}
+                    </div>
 
                     <div className="Linea-uno Linea"></div>
 
@@ -64,8 +67,11 @@ const Product = () => {
 
 
 
-                </div>
+                </div> 
 
+
+
+            
 
 
 
