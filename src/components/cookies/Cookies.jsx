@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './cookies.css';
 
-const GA_ID = 'G-D4EM52Q7XJ';
+const GA_ID = 'G-RSPCQEP31C';
 
 const loadGA = (id) => {
   if (!window.gtag) {
