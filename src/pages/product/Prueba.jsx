@@ -22,7 +22,7 @@ const Prueba = () => {
 <Header />
 
 <main className="Main-prueba">
-    <section className="Galeria">
+    {/* <section className="Galeria">
     <div className="contenedor-scroll">
       {imagenes.map((img) => (
         <section className="seccion" key={img.id}>
@@ -35,7 +35,7 @@ const Prueba = () => {
         <h3 className="nombre">NOMBRE</h3>
         <p className="Descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ducimus natus quaerat libero tenetur ad quos saepe. Explicabo ab necessitatibus quidem exercitationem, iure quisquam hic tempore delectus officiis aliquid numquam?</p>
     </div>
-    </section>
+    </section> */}
     </main>
 
 
