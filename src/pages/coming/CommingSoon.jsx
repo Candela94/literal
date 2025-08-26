@@ -56,7 +56,7 @@ const Comming = () => {
                     </a>
                 </div>
 
-                <Canvas ref={canvasRef} />
+                {/* <Canvas ref={canvasRef} /> */}
 
             </main>
             <button className="Button texto delay-3" onClick={handleClear}>CLEAR</button>

@@ -55,18 +55,18 @@ export const Cookies = () => {
   return (
     <div className="Card-cookies">
       <div className="Card-mensajeBtn">
-        <p className="Card-mensaje texto-cookie delay-1">
+        <p className="Card-mensaje texto-cookie# delay-1#">
           EN LITERAL UTILIZAMOS COOKIES PARA OFRECERTE UNA MEJOR EXPERIENCIA Y MEJORAR TU NAVEGACIÓN.
         </p>
-        <button className="Btn-close texto-cookie delay-1" onClick={handleReject}>X</button>
+        <button className="Btn-close texto-cookie## delay-1##" onClick={handleReject}>X</button>
       </div>
 
       <button className="Card-btnLeer texto-cookie delay-2">LEER MÁS</button>
 
       <div className="Card-buttons">
-        <button className="Btn texto-cookie delay-3" onClick={handleAccept}>ACEPTAR</button>
-        <button className="Btn texto-cookie delay-4" onClick={handleReject}>RECHAZAR</button>
-        <button className="Btn texto-cookie delay-5">POLÍTICA DE COOKIES</button>
+        <button className="Btn texto###-cookie delay###-3" onClick={handleAccept}>ACEPTAR</button>
+        <button className="Btn texto###-cookie delay###-4" onClick={handleReject}>RECHAZAR</button>
+        <button className="Btn texto###-cookie delay###-5">POLÍTICA DE COOKIES</button>
       </div>
     </div>
   );

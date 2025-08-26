@@ -17,8 +17,8 @@ function Layout() {
 {/* <Comming /> */}
 
 <Outlet />
-{/* <Prueba />  
- <Cookies /> */}
+{/* <Prueba />   */}
+ <Cookies />
 
 
     </>
