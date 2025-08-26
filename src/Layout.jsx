@@ -18,7 +18,7 @@ function Layout() {
 
 <Outlet />
 {/* <Prueba />   */}
- <Cookies />
+ {/* <Cookies /> */}
 
 
     </>
