@@ -15,7 +15,7 @@ function Layout() {
   return (
     <>
 {/* <Comming /> */}
-<Cookies />
+{/* <Cookies /> */}
 <Outlet />
 {/* <Prueba /> */}
 
