@@ -1,0 +1,31 @@
+
+
+.Card-cookies{
+    display: flex;
+    flex-direction: column;
+    padding: 0.7rem;
+    border: 2px solid black;
+}
+
+
+.Card-mensajeBtn{
+    display: flex;
+    align-items:first baseline;
+}
+.Btn-close{
+    text-align: end;
+}
+
+
+.Card-btnLeer, .Btn{
+    text-align: start;
+}
+
+
+.Card-buttons{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+

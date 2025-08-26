@@ -45,6 +45,17 @@ body {
 
 
 
+button {
+
+  
+
+    background: none;
+    border: none;
+    font-family: outfit-semibold;
+}
+
+
+
 
 @font-face {
   font-family: outfit-black;
