@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './cookies.css';
 
-const GA_ID = 'id-google-analytics';
+const GA_ID = 'G-D4EM52Q7XJ';
 
 const loadGA = (id) => {
 
@@ -9,7 +9,7 @@ const loadGA = (id) => {
     if (!window.gtag) {
 
 
-        // Script para cargar gtag
+        // Script para cargar gtag (gtag es una función que utiliza Google para enviar datos)
 
         const scriptOne = document.createElement('script');
         scriptOne.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
@@ -21,6 +21,8 @@ const loadGA = (id) => {
 
         const scriptTwo = document.createElement('script');
 
+
+        //Script que inicializa la configuración de GA este cargada
         scriptTwo.innerHTML = `
 
             window.dataLayer = window.dataLayer || [];
