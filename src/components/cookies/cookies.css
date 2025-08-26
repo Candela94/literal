@@ -3,22 +3,36 @@
 .Card-cookies{
     display: flex;
     flex-direction: column;
-    padding: 0.7rem;
+    padding:0.3rem;
     border: 2px solid black;
+    width: 60%;
+    position: fixed;
+    top: 1rem;
+    z-index: 1;
+    right: 1rem;
 }
+
+
 
 
 .Card-mensajeBtn{
     display: flex;
-    align-items:first baseline;
+    position: relative;
+    width: 100%;
 }
 .Btn-close{
     text-align: end;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
 }
 
 
 .Card-btnLeer, .Btn{
     text-align: start;
+    cursor: pointer;
+
 }
 
 
@@ -29,3 +43,106 @@
 }
 
 
+.Card-btnLeer{
+    text-decoration: underline;
+}
+
+
+
+
+
+
+.texto-cookie{
+   
+    overflow: hidden;
+    opacity: 0;
+    
+    animation: persiana 0.5s ease-out forwards;
+}
+
+
+
+
+
+@keyframes persiana {
+
+    0%{
+        clip-path:  inset(0 0 100% 0);
+        opacity: 0;
+    }
+
+
+    100%{
+        clip-path:  inset(0 0 0% 0);
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+@keyframes abrir {
+    0% {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+
+
+
+
+
+.delay-1{
+    animation-delay: 0.8s;
+}
+
+
+
+.delay-2{
+    animation-delay: 1.2s;
+}
+
+
+
+.delay-3{
+    animation-delay: 1.8s;
+}
+
+
+.delay-4{
+    animation-delay: 2.2s;
+}
+
+
+
+
+
+
+
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .Card-cookies{
+        width: 30%;
+    }
+
+}
+
+
+
+
+@media (min-width: 1024px){
+
+    .Card-cookies{
+        width: 30%;
+    }
+
+}

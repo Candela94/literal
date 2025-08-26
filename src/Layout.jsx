@@ -15,9 +15,11 @@ function Layout() {
   return (
     <>
 {/* <Comming /> */}
-{/* <Cookies /> */}
-<Outlet />
-{/* <Prueba /> */}
+
+{/* <Outlet /> */}
+<Prueba />
+<Cookies />
+
 
     </>
   )

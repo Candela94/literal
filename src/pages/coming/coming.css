@@ -87,8 +87,6 @@
     overflow: hidden;
     opacity: 0;
     text-align: center;
-    font-weight: 600;
-    font-family: outfit-semibold;
     animation: persiana 0.5s ease-out forwards;
 }
 
