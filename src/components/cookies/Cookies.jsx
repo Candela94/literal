@@ -53,21 +53,31 @@ export const Cookies = () => {
   console.log("Mostrando el banner");
 
   return (
+
+    
     <div className="Card-cookies">
+
+    
       <div className="Card-mensajeBtn">
         <p className="Card-mensaje texto-cookie# delay-1#">
           EN LITERAL UTILIZAMOS COOKIES PARA OFRECERTE UNA MEJOR EXPERIENCIA Y MEJORAR TU NAVEGACIÓN.
         </p>
         <button className="Btn-close texto-cookie## delay-1##" onClick={handleReject}>X</button>
       </div>
-
+      <div className="Card-mensajeImg">
       <button className="Card-btnLeer texto-cookie delay-2">LEER MÁS</button>
+
+      
+        <img src="/img/literal-cookies.png" alt="cookies" className="Cookies-imagen" />
+        </div>
+     
 
       <div className="Card-buttons">
         <button className="Btn texto###-cookie delay###-3" onClick={handleAccept}>ACEPTAR</button>
-        <button className="Btn texto###-cookie delay###-4" onClick={handleReject}>RECHAZAR</button>
-        <button className="Btn texto###-cookie delay###-5">POLÍTICA DE COOKIES</button>
+       
+        <button className="Btn texto###-cookie delay###-5" style={{color:'grey'}}>POLÍTICA DE COOKIES</button>
       </div>
     </div>
   );
 };
+ 
