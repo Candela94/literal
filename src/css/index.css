@@ -23,7 +23,7 @@
 
 :root{
 
-  font-family: outfit-semibold, poppins;
+  font-family: outfit-medium, poppins;
   font-size: 14px;
   color: black;
 
@@ -51,10 +51,15 @@ button {
 
     background: none;
     border: none;
-    font-family: outfit-semibold;
+    font-family: outfit-medium;
 }
 
 
+
+@font-face {
+  font-family: outfit-medium;
+  src: url(../../public/fonts/Outfit-Medium.ttf);
+}
 
 
 @font-face {

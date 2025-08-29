@@ -1,78 +1,48 @@
+.Header {
+  }
+  
+  .Titulo-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .Titulo {
+    font-size: 10vw; 
+    text-transform: uppercase;
+    margin: 0;
+    white-space: nowrap; 
+  }
+  
+  .Logo {
+    
+   height: 10vw;
+    width: auto;
+  }
 
-
-.Header{
-    padding: 1.5rem;
-    color: black;
-    position: sticky;
-    top: 0;
-    background-color: white;
-    z-index: 1;
-}
-
-
-
-.Logo-dekstop{
-    display: none;
-}
-
-
-.Logo-mobile{
-    width: 50px;
-}
-
-
-.Header-nav{
+  
+  .Header-nav {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-}
+    padding: 0 0.5rem;
+  }
+  
 
-.Header-ul{
+
+
+
+  .Header-ul {
+
     display: flex;
-    gap: 2rem;
-}
-
-.Header-li{
+    justify-content: end;
+    gap: 1rem;
+    margin-right: 1rem;
+  }
+  
+  .Header-li {
     list-style: none;
-
-}
-
-
-
-
-
-
-
-
-
-@media (min-width: 768px) and (max-width: 1024px) {
-
-    .Logo-mobile{
-        display: none;
-    }
-
-    .Logo-dekstop{
-        display: block;
-        width: 150px;
-    }
-}
-
-
-
-
-
-
-
-
-
-@media (min-width: 1025px) {
-
-    .Logo-mobile{
-        display: none;
-    }
-
-    .Logo-dekstop{
-        display: block;
-        width: 200px;
-    }
-}
+    cursor: pointer;
+  }

@@ -1,0 +1,40 @@
+
+
+
+
+
+.Manifiesto{
+    position: fixed;
+    bottom: 0;
+
+    width: 100%;
+     /* animación */
+  opacity: 0;
+  transform: translateY(100%);
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+.Manifiesto-contenido{
+    text-align: start;
+    text-transform: uppercase;
+    padding: 0.5rem;
+
+    background-color: white;
+    z-index: 1;
+}
+
+
+.Manifiesto-contenido strong {
+    font-family: outfit-extrabold;
+  }

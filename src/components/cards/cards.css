@@ -1,0 +1,43 @@
+
+
+
+
+
+.Card-IG{
+    padding: 0.5rem; 
+    border: 2px solid black ;
+    width: 180px;
+    height: auto;
+
+}
+
+.Card-IGtxt{
+    text-align: start;
+}
+
+.IG-link{
+    display: flex;
+    gap: 0.5rem;
+    justify-content: start;
+    align-items: center;
+}
+
+
+
+.IG-linkTxt{
+    font-family: outfit-semibold;
+    
+}
+
+
+
+
+
+
+@media (min-width: 768px)   {
+
+
+    .Card-IG{
+        width: 200px;
+    }
+}

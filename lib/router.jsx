@@ -2,7 +2,7 @@
 
 import { createBrowserRouter } from "react-router";
 import ProtectedRoute from "../src/pages/protected-route/ProtectedRoute";
-import Landing from "../src/pages/landing/Literal";
+import Landing from "../src/pages/landing/Landing";
 import Layout from "../src/Layout";
 
 

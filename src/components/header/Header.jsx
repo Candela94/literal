@@ -1,31 +1,43 @@
 
 import './header.css'
+import { CardIG } from '../cards/Cards';
+
+export const Header = ({onClickManifiesto}) => {
 
 
-export const Header = () => {
-
-
-    return ( 
+    return (
 
         <>
 
-        <header className='Header'>
-            <nav className="Header-nav">
 
-            <img src="/literal-favicon.svg" alt="logo" className="Logo-mobile" />
-            <img src="/img/literal-logo.svg" alt="logo" className="Logo-dekstop" />
-                
-                <ul className="Header-ul">
-                    <li className="Header-li ">PRODUCTOS</li>
-                    <li className="Header-li ">CONTACTO</li>
-                </ul>
-            </nav>
-        </header>
-        
-        
-        
+            <header className='Header'>
+
+                <div className="Titulo-logo">
+                    <h1 className="Titulo">LA WEB DE</h1>
+                    <img src='./img/logo.png' alt="logo" className="Logo" />
+                </div>
+
+                <nav className="Header-nav">
+
+                    <CardIG />
+
+
+                    <ul className="Header-ul">
+                        <li className="Header-li" onClick={onClickManifiesto}>MANIFIESTO</li>
+                        <li className="Header-li">CARRITO(0)</li>
+                    </ul>
+
+                </nav>
+
+
+
+
+            </header>
+
+
+
         </>
-     );
+    );
 
 
 
