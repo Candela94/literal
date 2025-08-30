@@ -14,7 +14,7 @@ export const Header = ({onClickManifiesto}) => {
 
                 <div className="Titulo-logo">
                     <h1 className="Titulo">LA WEB DE</h1>
-                    <img src='./img/logo.png' alt="logo" className="Logo" />
+                    <img src='/img/logo.png' alt="logo" className="Logo" />
                 </div>
 
                 <nav className="Header-nav">

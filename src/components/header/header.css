@@ -1,4 +1,8 @@
 .Header {
+
+
+    position: sticky;
+    bottom: 0;
   }
   
   .Titulo-logo {

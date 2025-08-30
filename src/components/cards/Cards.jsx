@@ -41,10 +41,10 @@ export const CardIG = () => {
 
 
 
-export const CardProducto = () => {
+export const CardProducto = ({producto}) => {
 
 
-    const VITE_URL = process.env.VITE_URL
+   
 
 
     return (  
@@ -52,17 +52,21 @@ export const CardProducto = () => {
         <>
 
 
-
-        <div className="CardProducto">
+<NavLink to={`product/${producto._id}`} className='CardProducto'>
+   
 
             <div className="CardProducto-img">
+
+                <img src={producto.portada} alt={producto.nombre} className="Card-imagen" />
                 
             </div>
 
-            <div className="CardProducto-info">
+         
 
-            </div>
-        </div>
+                <p className="Info">{producto.nombre} {producto.precio}</p>
+
+           
+      </NavLink>
         
 
         

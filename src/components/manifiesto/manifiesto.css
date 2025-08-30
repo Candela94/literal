@@ -1,31 +1,27 @@
-
-
-
-
-
-.Manifiesto{
+.Manifiesto {
     position: fixed;
     bottom: 0;
+    padding: 0rem 0.5rem;
 
     width: 100%;
-     /* animación */
-  opacity: 0;
-  transform: translateY(100%);
-  animation: slideUp 0.5s ease-out forwards;
+    /* animación */
+    opacity: 0;
+    transform: translateY(100%);
+    animation: slideUp 0.5s ease-out forwards;
 }
 
 @keyframes slideUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
 
 
 
-.Manifiesto-contenido{
+.Manifiesto-contenido {
     text-align: start;
     text-transform: uppercase;
     padding: 0.5rem;
@@ -37,4 +33,4 @@
 
 .Manifiesto-contenido strong {
     font-family: outfit-extrabold;
-  }
+}

@@ -4,7 +4,7 @@ import { createBrowserRouter } from "react-router";
 import ProtectedRoute from "../src/pages/protected-route/ProtectedRoute";
 import Landing from "../src/pages/landing/Landing";
 import Layout from "../src/Layout";
-
+import Product from "../src/pages/product/Product";
 
 import LoginAdmin from "../src/pages/admin/LoginAdmin";
 import AdminForm from "../src/pages/admin/AdminForm";
@@ -50,6 +50,19 @@ const router = createBrowserRouter([{
             ]
         },
 
+
+
+
+        {
+            path:"/product/:pid",
+           
+            children : [
+                {
+                index : true ,
+                element : <Product />
+                }
+            ]
+        },
 
 
 
