@@ -52,17 +52,11 @@ const router = createBrowserRouter([{
 
 
 
-
         {
-            path:"/product/:pid",
-           
-            children : [
-                {
-                index : true ,
-                element : <Product />
-                }
-            ]
-        },
+            path: "/product/:pid",
+            element: <Product />
+          }
+          
 
 
 
