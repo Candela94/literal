@@ -24,7 +24,7 @@ const router = createBrowserRouter([{
 
         {
             index: true,
-            element:<Comming />
+            element:<Landing />
         },
 
 
