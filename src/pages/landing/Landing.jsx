@@ -51,10 +51,17 @@ const Landing = () => {
       
             {
               load ? (
+
+
                 <p className="Mensaje">Cargando proyectos</p>
               ) : error ? (
+
+
                 <p className="Mensaje">Error al cargar: {error}</p>
               ) : productos.length > 0 ? (
+
+
+
                 <ul className="Galeria-ul">
                   {
                     productos.map((producto) => (
@@ -64,6 +71,8 @@ const Landing = () => {
                     ))
                   }
                 </ul>
+
+                
               ) : (
                 <p className="Mensaje">No hay productos disponibles</p>
               )

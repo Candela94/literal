@@ -1,74 +1,77 @@
 import './product.css';
 import { Header } from '../../components/header/Header';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useFetchProduct } from '../../hooks/usefetch';
 import { useParams } from 'react-router';
 
 const Product = () => {
-    const { pid } = useParams();
-    const { producto, loading, error, obtenerProducto } = useFetchProduct();
+  const { pid } = useParams();
+  const { producto, loading, error, obtenerProducto } = useFetchProduct();
+  const scrollContainerRef = useRef(null);
+  const [scrollY, setScrollY] = useState(0);
 
-    useEffect(() => {
-        if (pid) {
-            obtenerProducto(pid);
-        }
-    }, [pid]);
-
-    // Establecer variable CSS para el número de imágenes
-    useEffect(() => {
-        if (producto && producto.imagenes) {
-            document.documentElement.style.setProperty('--num-imagenes', producto.imagenes.length);
-        }
-    }, [producto]);
-
-    console.log(producto);
-
-    if (loading) {
-        return (
-            <>
-                <Header />
-                <main className="Main-product">
-                    <div>Cargando producto...</div>
-                </main>
-            </>
-        );
+  useEffect(() => {
+    if (pid) {
+      obtenerProducto(pid);
     }
+  }, [pid]);
 
-    if (error) {
-        return (
-            <>
-                <Header />
-                <main className="Main-product">
-                    <div>Error al cargar el producto</div>
-                </main>
-            </>
-        );
-    }
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
 
-    return (
-        <>
-            <Header />
-            <main className="Main-product">
-                <div className="Galeria">
-                    <div className="contenedor-scroll">
-                        {producto && Array.isArray(producto.imagenes) && producto.imagenes.map((url, index) => (
-                            <div className="seccion" key={index}>
-                                <img 
-                                    src={url} 
-                                    alt={`Imagen ${index + 1} del producto`} 
-                                    className="img"
-                                    loading="lazy"
-                                />
-                            </div>
-                        ))}
-                    </div>
-                </div>
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <>
+      <Header />
+
+      <main className="Main-product">
 
 
-               
-            </main>
-        </>
-    );
+        <section className="producto-imagenes">
+        <div className="scroll-transition-container" ref={scrollContainerRef}>
+          {producto?.imagenes?.map((url, index) => {
+            const sectionHeight = window.innerHeight * 0.8;
+            const start = index * sectionHeight;
+            const end = (index + 1) * sectionHeight;
+
+            const progress = Math.min(Math.max((scrollY - start) / sectionHeight, 0), 1);
+            const isActive = scrollY >= start && scrollY <= end;
+
+            let translateY = 0;
+
+            // Solo aplicar movimiento a las imágenes después de la primera
+            if (index !== 0) {
+              translateY = (1 - progress) * 100;
+              if (scrollY > end) translateY = 0;
+              if (scrollY < start) translateY = 100;
+            }
+
+            return (
+              <img
+                key={index}
+                src={url}
+                alt={`Imagen ${index}`}
+                className="overlay-image"
+                style={{
+                  transform: `translateY(${translateY}%)`,
+                  zIndex: index,
+                }}
+              />
+            );
+          })}
+        </div>
+
+        <div style={{ height: `${producto?.imagenes?.length * 120}vh` }}></div>
+
+        </section>
+      </main>
+    </>
+  );
 };
 
 export default Product;

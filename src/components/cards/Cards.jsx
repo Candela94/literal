@@ -41,6 +41,9 @@ export const CardIG = () => {
 
 
 
+
+
+
 export const CardProducto = ({producto}) => {
 
 
@@ -63,7 +66,7 @@ export const CardProducto = ({producto}) => {
 
          
 
-                <p className="Info">{producto.nombre} {producto.precio}</p>
+                <p className="Info">{producto.nombre} {producto.precio}€</p>
 
            
       </NavLink>
