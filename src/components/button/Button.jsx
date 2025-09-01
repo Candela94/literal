@@ -15,6 +15,7 @@ export const Button = ({ children, onClick, disabled = false ,  variant = 'prima
             case 'secondary' : return 'secondary';
             case 'danger' : return 'danger';
             case 'disabled' : return 'disabled';
+            case 'action': return 'action'
         
 
             default: return 'primary'

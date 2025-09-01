@@ -7,6 +7,7 @@
     /* animación */
     opacity: 0;
     transform: translateY(100%);
+    z-index: 1;
     animation: slideUp 0.5s ease-out forwards;
 }
 

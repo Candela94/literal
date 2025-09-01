@@ -1,10 +1,12 @@
-.Header {
+.Header, .Header-carrito {
 
     position: sticky;
     top: 0;
     z-index: 100;
     background-color: white;
   }
+
+
   
   .Titulo-logo {
     display: flex;
@@ -14,19 +16,34 @@
     gap: 0.5rem;
     flex-wrap: wrap;
   }
+
+
+
+
   
   .Titulo {
+
     font-size: 10vw; 
     text-transform: uppercase;
     margin: 0;
     white-space: nowrap; 
+
   }
+
+
+
+
   
   .Logo {
     
    height: 10vw;
     width: auto;
   }
+
+
+.Titulo-logo{
+  display: flex;
+}
 
   
   .Header-nav {
@@ -38,7 +55,6 @@
 
 
 
-
   .Header-ul {
 
     display: flex;
@@ -46,8 +62,47 @@
     gap: 1rem;
     margin-right: 1rem;
   }
+
+
+
+
+
   
   .Header-li {
     list-style: none;
     cursor: pointer;
+  }
+
+
+
+
+  /* Header carrito */
+
+
+  .Header-carrito{
+
+    display: flex;
+    flex-direction: column;
+   gap: 0.3rem;
+    padding: 1rem;
+  }
+
+  .Titulo-logo-carrito {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+   
+  }
+
+  .Titulo-logo {
+    font-size: 6vw;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .Logo-header {
+    height: 6vw;
   }

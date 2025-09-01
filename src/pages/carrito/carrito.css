@@ -1,0 +1,50 @@
+
+.Main-carrito{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+    height: 100 dvh;
+}
+
+
+
+
+.Carrito-li{
+    list-style: none;
+}
+
+
+
+.Mensaje{
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.Footer-cart{
+
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    padding: 2rem;
+
+}
+
+
+
+.Footer-subtotal{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+

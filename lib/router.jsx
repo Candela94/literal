@@ -9,6 +9,7 @@ import Product from "../src/pages/product/Product";
 import LoginAdmin from "../src/pages/admin/LoginAdmin";
 import AdminForm from "../src/pages/admin/AdminForm";
 import Comming from "../src/pages/coming/CommingSoon";
+import Carrito from "../src/pages/carrito/Carrito";
 
 
 
@@ -17,24 +18,24 @@ import Comming from "../src/pages/coming/CommingSoon";
 const router = createBrowserRouter([{
 
     path: '/',
-    element: <Layout />,
+    element: <Comming />,
     children: [
 
 
 
         {
             index: true,
-            element:<Comming />
+            element: <Landing />
         },
 
 
         {
-            path:"/admin/login",
+            path: "/admin/login",
             // element: <ProtectedRoute requiredRole = 'admin' />,
-            children : [
+            children: [
                 {
-                index : true ,
-                element : <LoginAdmin />
+                    index: true,
+                    element: <LoginAdmin />
                 }
             ]
         },
@@ -42,12 +43,12 @@ const router = createBrowserRouter([{
 
 
         {
-            path:"/admin/uploads",
-            element: <ProtectedRoute requiredRole = 'admin' />,
-            children : [
+            path: "/admin/uploads",
+            element: <ProtectedRoute requiredRole='admin' />,
+            children: [
                 {
-                index : true ,
-                element : <AdminForm />
+                    index: true,
+                    element: <AdminForm />
                 }
             ]
         },
@@ -57,12 +58,20 @@ const router = createBrowserRouter([{
         {
             path: "/product/:pid",
             element: <Product />
-          }
-          
+        },
 
 
 
-       
+
+        {
+            path: "/carrito",
+            element: <Carrito />
+        }
+
+
+
+
+
     ]
 
 

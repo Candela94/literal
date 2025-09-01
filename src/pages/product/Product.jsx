@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useFetchProduct } from '../../hooks/usefetch';
 import { useParams } from 'react-router';
 
-
+import { useCart } from '../../context/CartContext';
 import { Button } from '../../components/button/Button';
 
 const Product = () => {
@@ -13,6 +13,7 @@ const Product = () => {
 
     const { pid } = useParams();
 
+    const {addToCart} = useCart()
 
     const { producto, loading, error, obtenerProducto } = useFetchProduct();
 
@@ -134,7 +135,7 @@ const Product = () => {
                                 <p className="producto-descripcion">{producto.descripcion}</p>
                             </div>
                             <div className="Btn-cart">
-                            <Button>AÑADIR AL CARRITO</Button>
+                            <Button variant = 'action' onClick={() => addToCart(producto)}>AÑADIR AL CARRITO</Button>
                             </div>
 
                             </div>

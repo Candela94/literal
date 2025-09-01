@@ -16,13 +16,10 @@ function Layout() {
 
     <>
 
-      {/* <Comming /> */}
 
       <Outlet />
       
-      {/* <Landing /> */}
-      {/* <Prueba />   */}
-      {/* <Cookies /> */}
+     
 
 
     </>

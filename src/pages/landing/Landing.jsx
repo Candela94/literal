@@ -8,7 +8,8 @@ import { Manifiesto } from "../../components/manifiesto/Manifiesto";
 
 import { CardProducto } from "../../components/cards/Cards";
 import { useFetchAll } from "../../hooks/usefetch";
-
+import { Footer } from "../../components/footer/Footer";
+import { LoaderDots } from "../../components/loader/Loader";
 
 const Landing = () => {
 
@@ -16,24 +17,24 @@ const Landing = () => {
 
     const [manifiesto, setManifiesto] = useState(false)
 
-    const manifiestoRef = useRef(null)
+    // const manifiestoRef = useRef(null)
 
     const { productos, load, error } = useFetchAll()
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        const handleClickOutside = (e) => {
+    //     const handleClickOutside = (e) => {
 
-            if (manifiesto && manifiestoRef.current && !manifiestoRef.current.contains(e.target)) {
-                setManifiesto(false);
+    //         if (manifiesto && manifiestoRef.current && !manifiestoRef.current.contains(e.target)) {
+    //             setManifiesto(false);
 
-            }
-        }
+    //         }
+    //     }
 
-        document.addEventListener("click", handleClickOutside);
-        return () => document.removeEventListener("click", handleClickOutside);
-    }, [manifiesto])
+    //     document.addEventListener("click", handleClickOutside);
+    //     return () => document.removeEventListener("click", handleClickOutside);
+    // }, [manifiesto])
 
 
 
@@ -45,15 +46,15 @@ const Landing = () => {
         <>
           <Header onClickManifiesto={() => setManifiesto(prev => !prev)} />
       
-          <main className="Main">
+          <main className="Main-landing">
       
-            {manifiesto && <Manifiesto ref={manifiestoRef} />}
-      
+            {/* {manifiesto && <Manifiesto ref={manifiestoRef} />}
+       */}
             {
               load ? (
 
 
-                <p className="Mensaje">Cargando proyectos</p>
+               <LoaderDots />
               ) : error ? (
 
 
@@ -79,6 +80,7 @@ const Landing = () => {
             }
       
           </main>
+          <Footer />
         </>
       );
       

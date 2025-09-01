@@ -40,7 +40,7 @@
     flex-direction: column;
     gap: 1rem;
    padding: 1rem;
-   width: 50%;
+   width: 400px;
 
 
 }
@@ -54,6 +54,7 @@
 
 
 .CardProducto-img{
+    display: flex;
 
     width: 100%;
 
@@ -71,6 +72,54 @@
 .Info{
     text-align: start;
 
+}
+
+
+
+
+
+
+
+
+
+
+/* Card carrito */
+
+.Cart{
+    display: flex;
+    align-items: center;
+   gap: 4rem;
+   padding: 1rem;
+   justify-content: space-between;
+
+}
+
+
+
+.controladores{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Cart-img{
+   
+    width: 25%;
+}
+
+
+.Cart-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    width: 100%;
+   
+}
+
+
+.Cart-eliminar{
+    text-decoration: underline;
+    cursor:pointer;
 }
 
 

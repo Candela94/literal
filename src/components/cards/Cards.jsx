@@ -4,6 +4,7 @@
 import './cards.css'
 import { NavLink } from 'react-router';
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useCart } from '../../context/CartContext';
 
 
 
@@ -44,35 +45,96 @@ export const CardIG = () => {
 
 
 
-export const CardProducto = ({producto}) => {
+export const CardProducto = ({ producto }) => {
 
 
-   
 
 
-    return (  
+
+    return (
 
         <>
 
 
-<NavLink to={`product/${producto._id}`} className='CardProducto'>
-   
+            <NavLink to={`product/${producto._id}`} className='CardProducto'>
 
-            <div className="CardProducto-img">
 
-                <img src={producto.portada} alt={producto.nombre} className="Card-imagen" />
-                
-            </div>
+                <div className="CardProducto-img">
 
-         
+                    <img src={producto.portada} alt={producto.nombre} className="Card-imagen" />
+
+                </div>
+
+
 
                 <p className="Info">{producto.nombre} {producto.precio}€</p>
 
-           
-      </NavLink>
-        
 
-        
+            </NavLink>
+
+
+
         </>
     );
+}
+
+
+
+
+
+export const CardCarrito = ({ item }) => {
+
+
+    const { removeFromCart ,incrementQty, decrementQty, } = useCart();
+
+
+
+    return (
+
+
+        <div className="Cart">
+            <img src={item.portada} alt={item.nombre} className="Cart-img" />
+
+            <div className="Cart-info">
+            <div className="Cart-detalle">
+                <h3 className='Cart-nombre'>{item.nombre}</h3>
+                <p>{item.quantity} x {item.precio},00 €</p>
+
+                <div className="controladores">
+
+
+                {item.quantity > 1 ? (
+
+                    
+              <button className="Cart-btn" onClick={() => decrementQty(item._id)} aria-label="Restar">
+                –
+              </button>
+            ) : (
+              // opcional: placeholder para evitar “saltos” de layout
+              <span style={{ width: 32, display: 'inline-block' }} />
+            )}
+
+          
+
+            <button className="Cart-btn" onClick={() => incrementQty(item._id)} aria-label="Sumar">
+              +
+            </button>
+                </div>
+              
+               
+            </div>
+            <p className='Cart-eliminar'
+            onClick={() => removeFromCart(item._id)}>ELIMINAR</p>
+
+            </div>
+
+            
+        </div>
+
+
+    )
+
+
+
+
 }
