@@ -66,7 +66,7 @@ export const CardProducto = ({ producto }) => {
 
                 </div>
 
-                <div className="texto">
+                <div className="Texto-txt">
 
                 <p className="Info">{producto.nombre} {producto.precio}€</p>
                 </div>

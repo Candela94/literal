@@ -1,9 +1,11 @@
-.Header, .Header-carrito {
+.Header {
 
     position: sticky;
     top: 0;
     z-index: 100;
     background-color: white;
+    padding: 0 0.3rem;
+
   }
 
 
@@ -12,9 +14,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    gap: 0.5rem;
+    height: fit-content;
+    gap: 0.6rem;
     flex-wrap: wrap;
+    position: relative;
+
   }
 
 
@@ -32,11 +36,10 @@
 
 
 
-
   
   .Logo {
     
-   height: 10vw;
+    height: 10vw;
     width: auto;
   }
 
@@ -47,9 +50,13 @@
 
   
   .Header-nav {
+    position: fixed;
+    top: 11vw;
+    width: 100%;;
+    background-color: white;
     display: flex;
     justify-content: space-between;
-    padding: 0 0.5rem;
+   padding: 0 0.3rem;
   }
   
 
@@ -105,4 +112,61 @@
   
   .Logo-header {
     height: 6vw;
+  }
+
+
+
+  @media (min-width: 768px) and (max-with: 1023px){
+
+
+
+    .Titulo{
+      font-size: 10.5vw;
+    }
+
+
+    .Logo{
+      height: 10.5vw;
+    }
+
+
+    .Header-nav{
+      padding: 0 0.2rem;
+    }
+  }
+
+
+
+
+
+
+  @media (min-width: 1024px) {
+
+
+    .Header{
+      margin-left: 0.2rem;
+    }
+
+
+    .Titulo{
+      font-size: 10.4vw;
+    }
+
+
+    .Logo{
+      height: 10.4vw;
+    }
+
+
+
+    .Header-nav {
+      position: fixed;
+      top: 11.5vw;
+      width: 100%;;
+      
+     padding: 0 0.9rem;
+    }
+    
+
+
   }

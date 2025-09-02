@@ -61,7 +61,7 @@
 
 }
 
-.texto {
+.Texto-txt {
     width: 100%
 }
 
@@ -148,7 +148,9 @@
 
 
     /* card-ig */
-
+.Card-IG{
+    width: 200px;
+}
 
 
 }
