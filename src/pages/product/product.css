@@ -57,43 +57,6 @@
 
 
 
-.Miniaturas-barra {
-  position: fixed;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.95);
-  padding: 0.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  display: flex;
-  gap: 0.5rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: 20;
-}
-
-.Miniaturas-barra.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.miniatura {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.miniatura:hover {
-  transform: scale(1.1);
-}
-
-
-
 
 
 

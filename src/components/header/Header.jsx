@@ -51,8 +51,8 @@ export const Header = () => {
                     <CardIG />
 
                     <ul className="Header-ul">
-                        <li className="Header-li" onClick={() => setManifiesto(prev => !prev)}>MANIFIESTO</li>
-                        <NavLink to='/carrito'><li className="Header-li">CARRITO({totalCantidad})</li></NavLink>
+                        <li className="Header-li texto delay-header1" onClick={() => setManifiesto(prev => !prev)}>MANIFIESTO</li>
+                        <NavLink to='/carrito'><li className="Header-li texto delay-header2">CARRITO({totalCantidad})</li></NavLink>
                     </ul>
                 </nav>
             </header>

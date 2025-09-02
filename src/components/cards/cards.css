@@ -1,21 +1,19 @@
-
-
 /* Card instagram */
 
 
-.Card-IG{
-    padding: 0.5rem; 
-    border: 2px solid black ;
+.Card-IG {
+    padding: 0.5rem;
+    border: 2px solid black;
     width: 180px;
     height: auto;
 
 }
 
-.Card-IGtxt{
+.Card-IGtxt {
     text-align: start;
 }
 
-.IG-link{
+.IG-link {
     display: flex;
     gap: 0.5rem;
     justify-content: start;
@@ -24,9 +22,9 @@
 
 
 
-.IG-linkTxt{
+.IG-linkTxt {
     font-family: outfit-semibold;
-    
+
 }
 
 
@@ -35,12 +33,13 @@
 /* Card productos */
 
 
-.CardProducto{
+.CardProducto {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
-   padding: 1rem;
-   width: 400px;
+    padding: 1rem;
+    width: 400px;
 
 
 }
@@ -49,27 +48,32 @@
     text-decoration: none;
     color: inherit;
     display: block;
-  }
-  
+}
 
 
-.CardProducto-img{
+
+
+.CardProducto-img {
     display: flex;
+    width: 50%;
 
-    width: 100%;
 
-   
 
+}
+
+.texto {
+    width: 100%
 }
 
 
 
-.Card-imagen{
+.Card-imagen {
     width: 100%;
+    border-radius: 4px;
 }
 
 
-.Info{
+.Info {
     text-align: start;
 
 }
@@ -85,49 +89,66 @@
 
 /* Card carrito */
 
-.Cart{
+.Cart {
     display: flex;
     align-items: center;
-   gap: 4rem;
-   padding: 1rem;
-   justify-content: space-between;
+    gap: 4rem;
+    padding: 1rem;
+    justify-content: space-between;
 
 }
 
 
 
-.controladores{
+.controladores {
     display: flex;
     justify-content: space-between;
 }
 
-.Cart-img{
-   
+.Cart-img {
+
     width: 25%;
 }
 
 
-.Cart-info{
+.Cart-info {
     display: flex;
     align-items: center;
     justify-content: space-between;
-  
+
     width: 100%;
-   
+
 }
 
 
-.Cart-eliminar{
+.Cart-eliminar {
     text-decoration: underline;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 
 
-@media (min-width: 768px)   {
+@media (min-width: 768px) {
 
 
-    .Card-IG{
-        width: 200px;
+    .CardProducto {
+
+        width: 300px;
+
     }
+
+    .CardProducto-img {
+
+        width: 100%;
+    }
+
+
+
+
+
+
+    /* card-ig */
+
+
+
 }

@@ -39,7 +39,7 @@ export const Button = ({ children, onClick, disabled = false ,  variant = 'prima
                 disabled={disabled}
                 className={`btn ${btnClass()} `}
             >
-                {children}
+               <span>{children}</span> 
             </button>
 
 

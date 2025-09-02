@@ -51,7 +51,7 @@ const Carrito = () => {
 
 
             {cartItems.map(item => (
-              <li key={item._id}>
+              <li className='Carrito-li' key={item._id}>
                 <CardCarrito item={item} />
               </li>
 
@@ -65,28 +65,27 @@ const Carrito = () => {
 
       {/*Footer solo cuando hay productos */}
      
-        <footer className="Footer-cart">
+      <footer className="Footer-cart">
+  {!estaVacio && (
+    <>
+      <div className="Footer-subtotal">
+        <p className="Subtotal">SUBTOTAL:</p>
+        <p className="Cantidad">{subtotal.toFixed(2)} €</p>
+      </div>
 
-        {!estaVacio && (
+      <NavLink to='/adress'>
+        <Button variant='action' className='Btn-footer'>
+          FINALIZAR COMPRA
+        </Button>
+      </NavLink>
+    </>
+  )}
 
-            <>
-          <div className="Footer-subtotal">
-            <p className="Subtotal">SUBTOTAL:</p>
-            <p className="Cantidad">{subtotal.toFixed(2)} €</p>
-          </div>
+  <p className="Footer-info">
+    PRECIOS CON IMPUESTOS INCLUÍDOS. LOS GASTOS DE ENVÍO SE CALCULAN EN EL SIGUIENTE PASO SEGÚN TU DIRECCIÓN DE ENTREGA. ENVÍO GRATUITO PARA PEDIDOS SUPERIORES A 200€. TAMBIÉN PUEDES RECOGER TU PEDIDO DE FORMA GRATUITA EN HOSPITALET, BARCELONA. SE ACEPTAN PAGOS MEDIANTE TARJETA O PAYPAL.
+  </p>
+</footer>
 
-          <Button variant='action' className='Btn-footer'>
-            FINALIZAR COMPRA
-          </Button></>
-
-
-
-      )}
-
-          <p className="Footer-info">
-            PRECIOS CON IMPUESTOS INCLUÍDOS. LOS GASTOS DE ENVÍO SE CALCULAN EN EL SIGUIENTE PASO SEGÚN TU DIRECCIÓN DE ENTREGA. ENVÍO GRATUITO PARA PEDIDOS SUPERIORES A 200€. TAMBIÉN PUEDES RECOGER TU PEDIDO DE FORMA GRATUITA EN HOSPITALET, BARCELONA. SE ACEPTAN PAGOS MEDIANTE TARJETA O PAYPAL.
-          </p>
-        </footer>
       
     </>
   );

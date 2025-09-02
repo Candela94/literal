@@ -11,21 +11,20 @@ import AdminForm from "../src/pages/admin/AdminForm";
 import Comming from "../src/pages/coming/CommingSoon";
 import Carrito from "../src/pages/carrito/Carrito";
 
-
-
+import CheckOut from "../src/pages/checkout/CheckOut";
 
 
 const router = createBrowserRouter([{
 
     path: '/',
-    element: <Comming />,
+    element: <Layout />,
     children: [
 
 
 
         {
             index: true,
-            element: <Landing />
+            element: <Comming />
         },
 
 
@@ -66,7 +65,14 @@ const router = createBrowserRouter([{
         {
             path: "/carrito",
             element: <Carrito />
+        },
+
+
+        {
+            path: "/adress",
+            element: <CheckOut />
         }
+
 
 
 

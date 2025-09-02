@@ -10,10 +10,25 @@
     border-radius: 120%;
     color: black;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+  position: relative;
+  display: inline-block;
 
 }
 
+
+
+.btn span {
+    display: inline-block;
+    transition: transform 0.5s ease;
+    transform-origin: center top;
+  }
+  
+  /* Al hacer hover, rotamos el texto */
+  .btn:hover span {
+    transform: rotateX(360deg);
+  }
 
 .btn:active{
     transform: scale(0.98);

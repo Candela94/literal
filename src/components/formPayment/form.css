@@ -1,0 +1,47 @@
+
+
+
+
+.Formulario{
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+
+    width: 100%;
+
+    padding: 1rem;
+ 
+}
+
+
+.Datos{
+
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
+  
+
+
+
+}
+
+
+
+.Formulario-input{
+
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 0.3rem;
+    transition: border-bottom 0.1s ease;
+    font-family: outfit-medium;
+    
+}
+
+
+.Formulario-input:focus{
+    outline: none;
+    border-bottom: 3px solid black;
+    background: none;
+}

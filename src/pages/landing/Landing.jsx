@@ -48,8 +48,7 @@ const Landing = () => {
       
           <main className="Main-landing">
       
-            {/* {manifiesto && <Manifiesto ref={manifiestoRef} />}
-       */}
+         
             {
               load ? (
 
@@ -62,7 +61,7 @@ const Landing = () => {
               ) : productos.length > 0 ? (
 
 
-
+<div className="Galeria">
                 <ul className="Galeria-ul">
                   {
                     productos.map((producto) => (
@@ -71,7 +70,7 @@ const Landing = () => {
                       </li>
                     ))
                   }
-                </ul>
+                </ul></div>
 
                 
               ) : (
