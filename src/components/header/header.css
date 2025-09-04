@@ -8,46 +8,28 @@
 
   }
 
-
-  
-  .Titulo-logo {
+  .TituloCompleto {
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: fit-content;
-    gap: 0.6rem;
-    flex-wrap: wrap;
-    position: relative;
-
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
   }
-
-
-
-
   
   .Titulo {
-
-    font-size: 10vw; 
+    font-size: clamp(2rem, 10vw, 9rem);
     text-transform: uppercase;
     margin: 0;
-    white-space: nowrap; 
-
+    white-space: nowrap;
   }
-
-
-
   
   .Logo {
-    
-    height: 10vw;
+    height: clamp(2rem, 10vw, 9rem);
     width: auto;
   }
-
-
-.Titulo-logo{
-  display: flex;
-}
-
+  
   
   .Header-nav {
     position: fixed;
@@ -82,6 +64,57 @@
 
 
 
+/* Header-small */
+
+
+.HeaderSmall{
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0.5rem;
+position: fixed;
+width: 100%;
+top: 0;
+background-color: white;
+z-index: 99;
+
+}
+
+
+
+.TituloCompletoSmall{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+.LogoSmall{
+  height: 2rem;
+}
+
+
+.Header-ulSmall{
+  display: flex;
+  gap: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   /* Header carrito */
 
@@ -97,42 +130,49 @@
   .Titulo-logo-carrito {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
     width: 100%;
    
   }
 
   .Titulo-logo {
-    font-size: 6vw;
+    font-size: clamp(2.3rem, 3vw, 2rem);
     display: flex;
     justify-content: start;
     align-items: center;
-    gap: 0.5rem;
   }
   
   .Logo-header {
-    height: 6vw;
+    height: clamp(2.3rem, 3vw, 2rem);
+  }
+
+
+  .Titulo-cantidad{
+    font-size: clamp(2.3rem, 3vw, 2rem);
+
   }
 
 
 
-  @media (min-width: 768px) and (max-with: 1023px){
+  @media (min-width: 768px) and (max-width: 1023px){
 
 
 
-    .Titulo{
+    /* .Titulo{
       font-size: 10.5vw;
     }
 
 
     .Logo{
       height: 10.5vw;
-    }
+    } */
 
 
     .Header-nav{
       padding: 0 0.2rem;
     }
+
+
+
   }
 
 
@@ -147,15 +187,15 @@
       margin-left: 0.2rem;
     }
 
-
+/* 
     .Titulo{
-      font-size: 10.4vw;
+      font-size: 10.3vw;
     }
 
 
     .Logo{
-      height: 10.4vw;
-    }
+      height: 10.3vw;
+    } */
 
 
 

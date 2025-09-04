@@ -47,12 +47,12 @@ const CheckOut = () => {
           step === 1 && (
 
 
-            <FormAdress 
-            datos={datosEnvio}
-            setDatos={setDatosEnvio} 
-            onNext={() => setStep(2)}/>
-           
-          
+            <FormAdress
+              datos={datosEnvio}
+              setDatos={setDatosEnvio}
+              onNext={() => setStep(2)} />
+
+
 
           )
         }
@@ -62,7 +62,15 @@ const CheckOut = () => {
 
           step === 2 && (
 
-            <FormPayment/>
+            <FormPayment
+
+              amount={5000}
+              datosEnvio={datosEnvio}
+              onBack={() => setStep(1)}
+              onPaid={(paymentIntent) => {
+                console.log("Pago correcto:", paymentIntent);
+                // aquí puedes vaciar carrito, navegar a /gracias, etc.
+              }} />
           )
         }
 

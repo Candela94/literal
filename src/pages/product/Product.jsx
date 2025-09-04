@@ -1,5 +1,5 @@
 import './product.css';
-import { Header } from '../../components/header/Header';
+import { HeaderSmall } from '../../components/header/Header';
 import { useState, useEffect, useRef } from 'react';
 import { useFetchProduct } from '../../hooks/usefetch';
 import { useParams } from 'react-router';
@@ -62,7 +62,7 @@ const Product = () => {
 
     return (
         <>
-            <Header />
+            <HeaderSmall />
 
             <main className="Main-product">
 
@@ -81,6 +81,8 @@ const Product = () => {
 
                                 const progress = Math.min(Math.max((scrollY - start) / sectionHeight, 0), 1);
                                 const isActive = scrollY >= start && scrollY <= end;
+                                const totalScrollHeight = (producto?.imagenes?.length + 1) * sectionHeight;
+
 
                                 let translateY = 0;
 
@@ -113,7 +115,7 @@ const Product = () => {
                                 );
                             })}
                         </div>
-                        <div style={{ height: `${producto?.imagenes?.length * 60}vh` , position:'relative'}}></div>
+                        <div style={{ height: `${producto?.imagenes?.length * 70}vh` , position:'relative'}}></div>
 
                     </div>
 
@@ -130,15 +132,30 @@ const Product = () => {
                         producto && (
 
                             <div className="Info-boton">
+
+
+
                             <div className="Info-producto">
-                                <h3 className="producto-nombre">{producto.nombre} {producto.precio}€</h3>
+
+                                <div className="producto-nombrePrecio">
+                                <h3 className="producto-nombre">{producto.nombre}</h3>
+                                <h3 className="producto-precio"> {producto.precio}€</h3>
+                                </div>
+
+
+
+
                                 <p className="producto-descripcion">{producto.descripcion}</p>
-                            </div>
-                            <div className="Btn-cart">
+                                <div className="Btn-cart">
                             <Button variant = 'action' onClick={() => addToCart(producto)}>AÑADIR AL CARRITO</Button>
                             </div>
 
                             </div>
+
+                            </div>
+                           
+
+                           
                             
                         )
 

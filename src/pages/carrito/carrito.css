@@ -48,3 +48,51 @@
 }
 
 
+
+
+
+/* Carrito desktop */
+.Carrito-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 500px;
+    height: 100dvh;
+    background-color: white;
+    z-index: 200;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    padding: 1rem;
+  }
+  
+  .Carrito-panel.activo {
+    transform: translateX(0%);
+  }
+  
+  .Cerrar-carrito {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+
+
+
+@media (min-width: 768px) {
+.Main-carrito{
+   
+}
+
+
+.Footer-cart{
+}
+
+
+}
+

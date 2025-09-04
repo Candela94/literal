@@ -4,9 +4,12 @@ import { Outlet } from "react-router"
 import Landing from './pages/landing/Landing'
 import Product from "./pages/product/Product"
 import { Cookies } from "./components/cookies/Cookies"
+import {StickersAttention} from  './components/stickers/Stickers'
 
 
-import AttentionImages from "./components/attentionImg/AttentionImg"
+
+
+
 
 function Layout() {
 
@@ -14,12 +17,11 @@ function Layout() {
   return (
 
     <>
-
+{/* <StickersAttention /> */}
 
       <Outlet />
       
      
-{/* <AttentionImages /> */}
 
     </>
   )

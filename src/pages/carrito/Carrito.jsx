@@ -20,6 +20,8 @@ const Carrito = () => {
 
 
 
+
+
   //Función que recorre el array del carrito y hace el cálculo del subtotal
   const subtotal = cartItems.reduce(
     (acc, i) => acc + (Number(i.precio) || 0) * i.quantity,
@@ -32,7 +34,10 @@ const Carrito = () => {
 
   return (
     <>
-      <HeaderCarrito />
+
+        <HeaderCarrito />
+
+   
 
       <main className="Main-carrito">
 

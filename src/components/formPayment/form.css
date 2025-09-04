@@ -45,3 +45,28 @@
     border-bottom: 3px solid black;
     background: none;
 }
+
+
+
+
+/* Dale altura y padding al iframe del CardElement */
+.Formulario-input .StripeElement {
+    display: block;
+    min-height: 24px;     /* altura mínima visible */
+    padding: 0.3rem 0;    /* igual que tus inputs */
+    border-bottom: 2px solid black;
+    transition: border-bottom 0.1s ease;
+    font-family: outfit-medium, sans-serif;
+    background: transparent;
+  }
+  
+  /* Focus igual que tus inputs */
+  .Formulario-input .StripeElement--focus {
+    border-bottom: 3px solid black;
+  }
+  
+  /* Errores: rojo en el borde si quieres */
+  .Formulario-input .StripeElement--invalid {
+    border-bottom-color: #ef4444;
+  }
+  

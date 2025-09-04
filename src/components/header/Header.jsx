@@ -5,62 +5,157 @@ import { useCart } from '../../context/CartContext';
 import { Manifiesto } from '../manifiesto/Manifiesto';
 import { NavLink } from 'react-router';
 
+
+
+
+
 export const Header = () => {
+    const { cartItems } = useCart();
+    const totalCantidad = cartItems.reduce((total, item) => total + item.quantity, 0);
+  
+    const [manifiesto, setManifiesto] = useState(false);
+    const manifiestoRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+
+    
+  
+    useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 768);
+      };
+  
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+  
+    useEffect(() => {
+      const handleClickOutside = (e) => {
+        if (manifiesto && manifiestoRef.current && !manifiestoRef.current.contains(e.target)) {
+          setManifiesto(false);
+        }
+      };
+  
+      document.addEventListener("click", handleClickOutside);
+      return () => document.removeEventListener("click", handleClickOutside);
+    }, [manifiesto]);
+  
+    return (
+      <>
+        <header className="Header">
+          <NavLink to="/">
+            <div className="TituloCompleto">
+              <h1 className="Titulo">LA WEB DE</h1>
+              <img src="/img/logo.png" alt="logo" className="Logo" />
+            </div>
+          </NavLink>
+  
+          <nav className="Header-nav">
+            <CardIG />
+            <ul className="Header-ul">
+              <li className="Header-li texto delay-header1" onClick={() => setManifiesto(prev => !prev)}>MANIFIESTO</li>
+              <NavLink to="/carrito">
+                <li className="Header-li texto delay-header2">CARRITO({totalCantidad})</li>
+              </NavLink>
+            </ul>
+          </nav>
+        </header>
+  
+        {manifiesto && <Manifiesto ref={manifiestoRef} />}
+      </>
+    );
+  };
+
+
+
+
+
+
+
+
+
+
+
+export const HeaderSmall = () => {
 
 
     const { cartItems } = useCart();
     const totalCantidad = cartItems.reduce((total, item) => total + item.quantity, 0);
-
+  
     const [manifiesto, setManifiesto] = useState(false);
     const manifiestoRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
 
-
-
-
+    
+  
     useEffect(() => {
-        const handleClickOutside = (e) => {
-            if (manifiesto && manifiestoRef.current && !manifiestoRef.current.contains(e.target)) {
-                setManifiesto(false);
-            }
-        };
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 768);
+      };
+  
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
 
-        document.addEventListener("click", handleClickOutside);
-        return () => document.removeEventListener("click", handleClickOutside);
+
+
+  
+    useEffect(() => {
+      const handleClickOutside = (e) => {
+        if (manifiesto && manifiestoRef.current && !manifiestoRef.current.contains(e.target)) {
+          setManifiesto(false);
+        }
+      };
 
 
 
+
+
+  
+      document.addEventListener("click", handleClickOutside);
+      return () => document.removeEventListener("click", handleClickOutside);
     }, [manifiesto]);
-
+  
 
 
 
 
 
     return (
-        <>
-            <header className="Header">
-
-                <NavLink to='/'> <div className="Titulo-logo">
-                    <h1 className="Titulo">LA WEB DE</h1>
-                    <img src="/img/logo.png" alt="logo" className="Logo" />
-                </div></NavLink>
-
-                <nav className="Header-nav">
-                    <CardIG />
-
-                    <ul className="Header-ul">
-                        <li className="Header-li texto delay-header1" onClick={() => setManifiesto(prev => !prev)}>MANIFIESTO</li>
-                        <NavLink to='/carrito'><li className="Header-li texto delay-header2">CARRITO({totalCantidad})</li></NavLink>
-                    </ul>
-                </nav>
-            </header>
-
-            {manifiesto && <Manifiesto ref={manifiestoRef} />}
-        </>
+      <>
+        <header className="HeaderSmall">
+          <NavLink to="/">
+            <div className="TituloCompletoSmall">
+              <h1 className="TituloSmall">LA WEB DE</h1>
+              <img src="/img/logo.png" alt="logo" className="LogoSmall" />
+            </div>
+          </NavLink>
+  
+          <nav className="Header-navSmall">
+         
+            <ul className="Header-ulSmall">
+              <li className="Header-liSmall texto delay-header1" onClick={() => setManifiesto(prev => !prev)}>MANIFIESTO</li>
+              <NavLink to="/carrito">
+                <li className="Header-liSmall texto delay-header2">CARRITO({totalCantidad})</li>
+              </NavLink>
+            </ul>
+          </nav>
+        </header>
+  
+        {manifiesto && <Manifiesto ref={manifiestoRef} />}
+      </>
     );
-};
+  };
+
+
+
+
+
+
+
+
 
 
 

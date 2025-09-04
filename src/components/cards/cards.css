@@ -92,33 +92,80 @@
 .Cart {
     display: flex;
     align-items: center;
+    align-items: stretch;   
     gap: 4rem;
-    padding: 1rem;
+    padding: 1rem 0;
+    justify-content:flex-start;
+    /* background-color: yellow; */
+    border-bottom: 0.3px solid black;
+
+
+}
+
+
+
+.Cart-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: aqua; */
+    width: 100%;
     justify-content: space-between;
 
 }
 
 
 
-.controladores {
+.Cart-detalle {
+    width: 100%;
     display: flex;
+    flex-direction: column;
+
+
+}
+
+.Cart-nombre{
+    font-family: outfit-semibold;
+}
+
+.Nombre-precio {
+    display: flex;
+    flex-direction: column;
+    /* background-color: blue; */
+}
+
+
+.Datos-eliminar {
+    /* background-color: green; */
+    display: flex;
+    width: 100%;
     justify-content: space-between;
+}
+
+
+
+
+
+.controladores {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    /* border: 0.1px solid rgb(80, 79, 79); */
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 1rem;
 }
 
 .Cart-img {
 
     width: 25%;
+    /* aspect-ratio: 1 / 1;         */
+    object-fit: cover;           
+    display: block;
 }
 
 
-.Cart-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    width: 100%;
-
-}
 
 
 .Cart-eliminar {
@@ -148,9 +195,11 @@
 
 
     /* card-ig */
-.Card-IG{
-    width: 200px;
-}
+    .Card-IG {
+        width: 200px;
+    }
+
+
 
 
 }
