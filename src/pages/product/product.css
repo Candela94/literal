@@ -1,46 +1,30 @@
-.Main-product {
-  width: 100%;
-  margin-top: 60px;
+
+
+.Main-product{
   display: flex;
   flex-direction: column;
-  min-height: 80vh;
-}
-
-
-
-
-
-.producto-nombrePrecio{
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-
-.scroll-transition-container {
-  position: fixed;
-
-  height: 60vh;
   width: 100%;
-  overflow: hidden;
-  z-index: 1;
+  height: 90vh;
+  gap: 1rem;
+  margin-top: 4rem;
 }
 
-
-.producto-nombre,.producto-precio{
-  font-family: outfit-semibold;
+.galeria-contenedor {
+  height: 50vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
 }
 
+.imagen-galeria {
+  height: 50vh;
+  scroll-snap-align: start;
+  position: relative;
+}
 
-.overlay-image {
-  position: absolute;
-  top: 0;
-  left: 0;
+.imagen-galeria img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: none;
-  will-change: transform;
 }
 
 
@@ -48,29 +32,38 @@
 
 
 
-
-.Info-boton {
-  position: fixed;
+.info-producto{
   display: flex;
   flex-direction: column;
-  height: 30vh;
-  bottom: 0rem;
-  padding: 1rem;
   width: 100%;
+  height: 90vh;
 }
 
 
-.Btn-cart {
+.info-texto{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.producto-nombre{
+  font-family: outfit-semibold;
+}
+.info-descripcion{
+  width: 100%;
+  height: 38vh;
+  position: relative;
+}
+
+
+.btn-cart{
+  position: absolute;
+  bottom: 0.5rem;
+  width: 100%;
+  padding: 0.5rem;
   display: flex;
   justify-content: center;
-  margin-top: 4rem;
-  width: 100%;
-
-
-}
-
-.Info-producto {
-  width: 50%;
 }
 
 
@@ -80,100 +73,54 @@
 
 
 
+@media(min-width:768px) {
 
-
-/* ANIMACIONES */
-@keyframes slideFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes abrirPersiana {
-  to {
-    transform: scaleY(1);
-    opacity: 1;
-  }
-}
-
-
-
-
-
-
-/* MEDIA QUERIES */
-@media (min-width: 768px) {
-  .Main-product {
+  .Main-product{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    height: 50vh;
-   
-  }
-
-  .producto-imagenes {
-    width: 60%;
-    height: 30vh;
-    position: relative;
-  }
-
-
-  .scroll-transition-container {
-    width: 60%;
+    width: 100vw;
     height: 90vh;
-
-    top: 60px;
   }
 
 
-
-
-  .Info-boton {
-    position: absolute;
-    right: 10%;
-    top: 50%;
-    width: 30%;
-    height: auto;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
+  .Galeria-imagenes{
+    width:100%;
   }
 
-
-
-  .producto-nombrePrecio{
-    display: flex;
-   flex-direction: column;
-   justify-content: right;
-  
-    color: black; /* ✅ fuerza color visible por si hereda otro */
-    z-index: 11; 
-  
-  }
-
-  .Info-producto {
-    width: 40%;
-    position: fixed;
-    right: 0;
-    left: 58%;
-    top: 40%;
-    z-index: 10;
-    padding: 1rem;
-  }
-
-
-  .producto-nombre, .producto-precio{
-    text-align: start;
+  .galeria-contenedor{
+    height: 90vh;
     width: 100%;
   }
 
 
-  .overlay-image{
-    width: 90%;
+  .imagen-galeria{
+    height: 100vh;
+  }
+
+  .info-producto{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    /* background-color: rebeccapurple; */
   }
 
 
+  .info-texto{
+    margin-top: 3rem;
+  }
+
+  .info-descripcion{
+    /* background-color: red; */
+    width: 70%;
+    height: 50vh;
+  }
+
+  .producto-nombre, .producto-precio{
+    font-size: 2rem;
+  }
+
+  
 }

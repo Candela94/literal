@@ -1,0 +1,58 @@
+.shuffle-parent {
+    display: inline-block;
+    white-space: normal;
+    word-wrap: break-word;
+    will-change: transform;
+    line-height: 1; /* keep line height consistent before/after split to avoid jump */
+   
+    font-family: outfit-medium;
+    text-transform: uppercase;
+    visibility: hidden; /* hidden until initialized to avoid flash/jump */
+  }
+  
+  .shuffle-parent.is-ready {
+    visibility: visible;
+  }
+  
+  .shuffle-char-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: baseline;
+    position: relative;
+  }
+  
+  .shuffle-char-wrapper > span {
+    display: inline-flex;
+    will-change: transform;
+  }
+  
+  .shuffle-char {
+    line-height: 1;
+    display: inline-block;
+    text-align: center;
+  }
+  
+
+
+
+
+  /* uso 
+  
+  import Shuffle from './Shuffle';
+
+<Shuffle
+  text="Hello World"
+  shuffleDirection="right"
+  duration={0.35}
+  animationMode="evenodd"
+  shuffleTimes={1}
+  ease="power3.out"
+  stagger={0.03}
+  threshold={0.1}
+  triggerOnce={true}
+  triggerOnHover={true}
+  respectReducedMotion={true}
+/>
+
+
+*/

@@ -191,6 +191,33 @@
 
 
 
+    .Cart{
+       width: 100%;
+       height: 70%;
+       /* background-color: pink; */
+    }
+
+
+.controladores{
+
+    padding-bottom: 3rem;
+}
+
+
+
+    .Cart-img{
+        width: 15%;
+
+    }
+
+
+
+
+    .Cart-eliminar{
+        font-size: 14px;
+    }
+
+
 
 
 

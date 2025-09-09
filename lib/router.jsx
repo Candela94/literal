@@ -12,19 +12,19 @@ import Comming from "../src/pages/coming/CommingSoon";
 import Carrito from "../src/pages/carrito/Carrito";
 
 import CheckOut from "../src/pages/checkout/CheckOut";
-
+import { CarritoMenu } from "../src/components/cartmenu/CartMenu";
 
 const router = createBrowserRouter([{
 
     path: '/',
-    element: <Layout />,
+    element: <Comming />,
     children: [
 
 
 
         {
             index: true,
-            element: <Comming />
+            element: <Landing />
         },
 
 
@@ -65,6 +65,12 @@ const router = createBrowserRouter([{
         {
             path: "/carrito",
             element: <Carrito />
+        },
+
+
+        {
+            path: "/carrito/desk",
+            element: <CarritoMenu />
         },
 
 

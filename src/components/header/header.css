@@ -208,5 +208,11 @@ z-index: 99;
     }
     
 
+    .Header-carritoDesk{
+      /* background-color: red; */
+      width: 100%;
+      padding-left: 1rem;
+    }
+
 
   }

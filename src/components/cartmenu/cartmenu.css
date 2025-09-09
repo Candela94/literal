@@ -1,0 +1,47 @@
+.Menu-lateral {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    /* background-color: antiquewhite; */
+    background-color: white;
+    border-left: 0.5px solid black;
+    position: fixed;
+    right: -1000px;
+    top: 0;
+    height: 100vh;
+    transition: right 1s ease;
+    z-index: 9999;
+  }
+
+
+  
+  .Menu-lateral.opened {
+    right: 0px; /* ← Cambié esto también, antes tenías 200px */
+  }
+  
+  .Main-carrito {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* ← Esto hace que ocupe el espacio disponible */
+    width: 100%;
+    overflow-y: auto; /* ← Por si el contenido es muy largo */
+  }
+  
+  .Footer-cartDesk {
+    /* background-color: yellow; */
+    width: 100%;
+    flex-shrink: 0; 
+    padding: 1rem; 
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .Carrito-lista {
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
+    /* background-color: aqua; */
+    flex: 1; 
+    overflow-y: auto; 
+  }

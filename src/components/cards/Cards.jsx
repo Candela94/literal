@@ -5,7 +5,7 @@ import './cards.css'
 import { NavLink } from 'react-router';
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useCart } from '../../context/CartContext';
-
+import Shuffle from '../suffle/Suffle'
 
 
 
@@ -22,12 +22,26 @@ export const CardIG = () => {
                 <p className="Card-IGtxt">LITERALMENTE TODO EL COTILLEO EN IG</p>
                 <NavLink to='https://www.instagram.com/literal_____/' target="_blank"
                 >
-                    <span className="IG-link"><svg width="30" height="12" viewBox="0 0 30 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M28.8612 6.62404C29.1591 6.32618 29.1591 5.84326 28.8612 5.5454L24.0074 0.691529C23.7095 0.393672 23.2266 0.393672 22.9287 0.691529C22.6309 0.989387 22.6309 1.47231 22.9287 1.77017L27.2433 6.08472L22.9287 10.3993C22.6309 10.6971 22.6309 11.18 22.9287 11.4779C23.2266 11.7758 23.7095 11.7758 24.0074 11.4779L28.8612 6.62404ZM0.101562 6.08472V6.84743H28.3219V6.08472V5.322H0.101562V6.08472Z" fill="black" />
-                    </svg>
 
-                        <p className="IG-linkTxt">@LITERAL_____</p>
-                    </span>
+<Shuffle
+  text={  <span className="IG-link"><svg width="30" height="12" viewBox="0 0 30 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M28.8612 6.62404C29.1591 6.32618 29.1591 5.84326 28.8612 5.5454L24.0074 0.691529C23.7095 0.393672 23.2266 0.393672 22.9287 0.691529C22.6309 0.989387 22.6309 1.47231 22.9287 1.77017L27.2433 6.08472L22.9287 10.3993C22.6309 10.6971 22.6309 11.18 22.9287 11.4779C23.2266 11.7758 23.7095 11.7758 24.0074 11.4779L28.8612 6.62404ZM0.101562 6.08472V6.84743H28.3219V6.08472V5.322H0.101562V6.08472Z" fill="black" />
+</svg>
+
+  <p className="IG-linkTxt">@LITERAL_____</p>
+</span>}
+  shuffleDirection="right"
+  duration={0.3}
+  animationMode="evenodd"
+  shuffleTimes={1}
+  ease="power3.out"
+  stagger={0.03}
+  threshold={0.1}
+  triggerOnce={false}
+  triggerOnHover={true}
+  respectReducedMotion={true}
+/>
+                  
                 </NavLink>
             </div>
 
@@ -107,8 +121,8 @@ export const CardCarrito = ({ item }) => {
                     <div className="Datos-eliminar">
 
                         <div className="Nombre-precio">
-                            <h3 className='Cart-nombre'>{item.nombre}</h3>
-                            <p> {item.precio} €</p>
+                            <h4 className='Cart-nombre'>{item.nombre}</h4>
+                            <p className='Cart-precio'> {item.precio} €</p>
                         </div>
 
 

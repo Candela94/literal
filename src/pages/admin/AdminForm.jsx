@@ -12,8 +12,13 @@ const AdminForm = () => {
         descripcion: '',
         precio: '',
         talla: '',
-        dimensiones: ''
+        dimensiones: '',
+        hover:null
     })
+
+
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Simplificado - siempre debería ser un evento válido
@@ -42,6 +47,12 @@ const AdminForm = () => {
             // Añadir portada
             if (productoData.portada) {
                 formData.append('portada', productoData.portada);
+            }
+
+
+            //Añadir hover
+            if(productoData.hover) {
+                formData.append('hoverr', productoData.hover)
             }
 
             // Añadir imágenes adicionales
@@ -92,6 +103,9 @@ const AdminForm = () => {
 
             const result = await response.json();
             console.log('Resultado:', result);
+
+
+
             
             // Limpiar formulario después del éxito
             setProductoData({
@@ -101,8 +115,12 @@ const AdminForm = () => {
                 talla: '',
                 dimensiones: '',
                 imagenes: [],
-                portada: null
+                portada: null,
+                hover:null
             });
+
+
+
 
             // Limpiar inputs de archivo
             const fileInputs = document.querySelectorAll('input[type="file"]');
@@ -116,21 +134,30 @@ const AdminForm = () => {
         }
     }
 
+
+
+
+
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setProductoData((prev) => ({ ...prev, [name]: value }));
     }
 
+
+
+
+
+
     const handleFileChange = (e) => {
         const { name, files } = e.target;
-
-        console.log(`Cambio en ${name}:`, files); // Debug
-
+    
+        console.log(`Cambio en ${name}:`, files);
+    
         if (name === 'imgprod') {
-            // Validar máximo 10 archivos como en el backend
             if (files.length > 10) {
                 alert('Máximo 10 imágenes adicionales permitidas');
-                e.target.value = ''; // Limpiar input
+                e.target.value = '';
                 return;
             }
             setProductoData((prev) => ({ 
@@ -142,9 +169,14 @@ const AdminForm = () => {
                 ...prev, 
                 portada: files[0] || null 
             }));
+        } else if (name === 'hover') {
+            setProductoData((prev) => ({ 
+                ...prev, 
+                hover: files[0] || null 
+            }));
         }
     };
-
+    
     return (
         <>
             <main className="Main-admin">
@@ -215,6 +247,24 @@ const AdminForm = () => {
                                 required
                             />
                         </label>
+
+
+
+                 
+                        <label className="Formulario-label" htmlFor="Hover-upload">
+                            Seleccionar portada *
+                            <input
+                                onChange={handleFileChange}
+                                name="hover"
+                                className="Formulario-input"
+                                id="Hover-upload"
+                                type="file"
+                                accept="image/*"
+                                required
+                            />
+                        </label>
+
+                        
 
                         <label className="Formulario-label" htmlFor="Img-upload">
                             Seleccionar imágenes adicionales
