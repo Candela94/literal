@@ -13,27 +13,44 @@ export const StickersAttention = () => {
     '/img/pegatinas/3.png'
   ];
 
-  // ✅ DEBUG: Logs para ver qué está pasando
-  useEffect(() => {
-    console.log('🔍 DEBUG - Estado actual:', {
-      isPageVisible,
-      visibleStickers,
-      stickerIndex,
-      cycleCount
-    });
-  }, [isPageVisible, visibleStickers, stickerIndex, cycleCount]);
-
   // Detectar cambios de visibilidad de la página
   useEffect(() => {
     const handleVisibilityChange = () => {
       const visible = !document.hidden;
-      console.log('👁️ Cambio de visibilidad:', visible ? 'VISIBLE' : 'OCULTO');
+      console.log('🔄 Cambio de visibilidad detectado:', {
+        'document.hidden': document.hidden,
+        'document.visibilityState': document.visibilityState,
+        'página visible': visible
+      });
       setIsPageVisible(visible);
     };
 
+    // También detectar blur/focus de la ventana como respaldo
+    const handleWindowBlur = () => {
+      console.log('🌫️ Window blur - página probablemente oculta');
+      setIsPageVisible(false);
+    };
+
+    const handleWindowFocus = () => {
+      console.log('✨ Window focus - página probablemente visible');
+      setIsPageVisible(true);
+    };
+
+    // Verificar estado inicial
+    console.log('🔍 Estado inicial:', {
+      'document.hidden': document.hidden,
+      'document.visibilityState': document.visibilityState,
+      'página inicialmente visible': !document.hidden
+    });
+
     document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('blur', handleWindowBlur);
+    window.addEventListener('focus', handleWindowFocus);
+    
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('blur', handleWindowBlur);
+      window.removeEventListener('focus', handleWindowFocus);
     };
   }, []);
 
@@ -42,129 +59,97 @@ export const StickersAttention = () => {
     let interval;
 
     if (!isPageVisible) {
-      console.log('🚀 Usuario se fue - iniciando pegatinas');
+      console.log('🚀 Página oculta - iniciando pegatinas');
       
-      // Empezar inmediatamente con la primera pegatina
-      setTimeout(() => {
+      // Reiniciar estado
+      setVisibleStickers([]);
+      setStickerIndex(0);
+      
+      // Mostrar primera pegatina después de un pequeño delay
+      const startTimeout = setTimeout(() => {
         console.log('📌 Mostrando primera pegatina');
         setVisibleStickers([0]);
-        setStickerIndex(1);
-      }, 100);
+      }, 500);
 
-      // Mostrar pegatinas una por una cada 3 segundos
+      // Continuar con las siguientes pegatinas
       interval = setInterval(() => {
         setStickerIndex(prev => {
-          console.log('⏰ Timer - índice actual:', prev);
+          const nextIndex = prev + 1;
+          console.log('⏰ Timer - siguiente índice:', nextIndex);
           
-          if (prev < stickers.length) {
-            console.log('➕ Añadiendo pegatina:', prev);
-            setVisibleStickers(current => [...current, prev]);
-            return prev + 1;
+          if (nextIndex < stickers.length) {
+            // Añadir siguiente pegatina
+            console.log('➕ Añadiendo pegatina:', nextIndex);
+            setVisibleStickers(current => [...current, nextIndex]);
+            return nextIndex;
+          } else if (nextIndex < stickers.length * 2) {
+            // Fase de eliminación: quitar pegatinas una por una
+            const removeIndex = nextIndex - stickers.length;
+            console.log('➖ Quitando pegatina con índice:', removeIndex);
+            setVisibleStickers(current => {
+              const newStickers = current.filter(stickerIdx => stickerIdx !== removeIndex);
+              console.log('🗑️ Pegatinas después de quitar:', newStickers);
+              return newStickers;
+            });
+            return nextIndex;
           } else {
+            // Reiniciar ciclo completo
             console.log('🔄 Reiniciando ciclo');
-            setVisibleStickers([]);
             setCycleCount(count => count + 1);
-            setTimeout(() => {
-              setVisibleStickers([0]);
-            }, 500);
-            return 1;
+            setVisibleStickers([0]); // Empezar solo con la primera
+            return 0;
           }
         });
       }, 3000);
+
+      return () => {
+        clearTimeout(startTimeout);
+        if (interval) clearInterval(interval);
+      };
     } else {
-      console.log('👋 Usuario regresó - limpiando pegatinas');
+      console.log('👋 Página visible - limpiando pegatinas');
+      // Usuario regresó - limpiar todo
       setVisibleStickers([]);
       setStickerIndex(0);
     }
-
-    return () => {
-      if (interval) clearInterval(interval);
-    };
   }, [isPageVisible, stickers.length]);
 
   const getRandomPosition = (index) => {
     const positions = [
-      { top: '20%', left: '15%', rotate: '-15deg' },
-      { top: '60%', right: '20%', rotate: '20deg' },
-      { top: '40%', left: '50%', rotate: '-10deg' },
+      { top: '20%', left: '15%', rotate: '-15deg' },//negra
+      { top: '45%', right: '15%', rotate: '0deg' }, //gris
+      { top: '70%', left: '15%', rotate: '-10deg' }, //azul
     ];
     return positions[index] || positions[0];
   };
 
-  // ✅ DEBUG: Función para manejar errores de carga de imagen
-  const handleImageError = (stickerIdx) => {
-    console.error('❌ Error cargando imagen:', stickers[stickerIdx]);
-  };
-
-  const handleImageLoad = (stickerIdx) => {
-    console.log('✅ Imagen cargada correctamente:', stickers[stickerIdx]);
-  };
-
   return (
-    <>
-      {/* ✅ DEBUG: Mostrar estado actual */}
-      <div style={{ 
-        position: 'fixed', 
-        top: '10px', 
-        right: '10px', 
-        background: 'black', 
-        color: 'white', 
-        padding: '10px', 
-        borderRadius: '5px',
-        fontSize: '12px',
-        zIndex: 10000
-      }}>
-        Estado: {isPageVisible ? '👀 Visible' : '👋 Oculto'}<br/>
-        Pegatinas: {visibleStickers.length}<br/>
-        Índice: {stickerIndex}<br/>
-        Ciclo: {cycleCount}<br/>
-        {/* ✅ Botón para probar manualmente */}
-        <button 
-          onClick={() => {
-            console.log('🧪 Prueba manual - cambiando estado');
-            setIsPageVisible(!isPageVisible);
-          }}
-          style={{
-            marginTop: '5px',
-            padding: '5px',
-            fontSize: '10px',
-            cursor: 'pointer'
-          }}
-        >
-          🧪 Probar efecto
-        </button>
-      </div>
-
-      <div className="stickers-container">
-        {visibleStickers.map((stickerIdx) => {
-          const position = getRandomPosition(stickerIdx);
-          console.log('🎨 Renderizando pegatina:', stickerIdx, 'en posición:', position);
-          
-          return (
-            <div
-              key={`${cycleCount}-${stickerIdx}`}
-              className="sticker-item"
-              style={{
-                ...position,
-                '--rotation': position.rotate,
-              }}
-            >
-              <div className="sticker-shadow"></div>
-              <div className="sticker-content">
-                <img
-                  src={stickers[stickerIdx]}
-                  alt={`Pegatina ${stickerIdx + 1}`}
-                  className="sticker-image"
-                  onError={() => handleImageError(stickerIdx)}
-                  onLoad={() => handleImageLoad(stickerIdx)}
-                />
-                <div className="sticker-shine"></div>
-              </div>
-              <div className="sticker-blob"></div>
+    <div className="stickers-container">
+      {visibleStickers.map((stickerIdx) => {
+        const position = getRandomPosition(stickerIdx);
+        
+        return (
+          <div
+            key={`${cycleCount}-${stickerIdx}`}
+            className="sticker-item"
+            style={{
+              ...position,
+              '--rotation': position.rotate,
+            }}
+          >
+            <div className="sticker-shadow"></div>
+            <div className="sticker-content">
+              <img
+                src={stickers[stickerIdx]}
+                alt={`Pegatina ${stickerIdx + 1}`}
+                className="sticker-image"
+              />
+              <div className="sticker-shine"></div>
             </div>
-          );
-        })}
-      </div>
-    </>
+            <div className="sticker-blob"></div>
+          </div>
+        );
+      })}
+    </div>
   );
 };
