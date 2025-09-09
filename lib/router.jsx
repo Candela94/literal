@@ -17,14 +17,14 @@ import { CarritoMenu } from "../src/components/cartmenu/CartMenu";
 const router = createBrowserRouter([{
 
     path: '/',
-    element: <Comming />,
+    element: <Layout />,
     children: [
 
 
 
         {
             index: true,
-            element: <Landing />
+            element: <Comming />
         },
 
 
