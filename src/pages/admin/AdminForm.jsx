@@ -252,7 +252,7 @@ const AdminForm = () => {
 
                  
                         <label className="Formulario-label" htmlFor="Hover-upload">
-                            Seleccionar portada *
+                            Seleccionar hover *
                             <input
                                 onChange={handleFileChange}
                                 name="hover"
