@@ -52,7 +52,7 @@ const AdminForm = () => {
 
             //Añadir hover
             if(productoData.hover) {
-                formData.append('hoverr', productoData.hover)
+                formData.append('hover', productoData.hover)
             }
 
             // Añadir imágenes adicionales
